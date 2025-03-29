@@ -81,7 +81,7 @@ function getComputerChoice(choice1, choice2, choice3) {
 // console.log(computerChoiceMap.get("paper")); //yes this works
 // console.log(computerChoiceMap.get("scissors")); // yes this works
 
-// replacing computerChoice numbers with string values in the if statements didn't do anything
+
 
     if (computerChoice === 1) { // changed compChoice to computerChoice
         console.log(choice1);
@@ -91,18 +91,23 @@ function getComputerChoice(choice1, choice2, choice3) {
         console.log(choice2);
         return choice2;
 
-    } else {
+    } else if (computerChoice === 3) {
         console.log(choice3);
         return choice3;
 
+    } else {
+        return;
     }
 
 
 }
 
-getComputerChoice(); // it works.
+// commenting out calling the function as it keeps executing without a log
+// getComputerChoice(); // it works.
 
+//commenting a variable to put getComputerChoice result in
 
+let computerResult = getComputerChoice;
 
 
 
@@ -180,7 +185,12 @@ if (ignoreCase === 0) {
 
 }
 
-getHumanChoice(); // it works
+// commenting out calling the function as it keeps executing without a log
+// getHumanChoice(); // it works
+
+//commenting a variable to put getHumanChoice result in
+
+let humanResult = getHumanChoice;
 
 
 
@@ -200,10 +210,9 @@ getHumanChoice(); // it works
 
 // Create a new function named playRound
 
-function playRound(humanChoice, computerChoice) { // the parameters are the choices
+// there is something playing the human prompt twice, but there is no message for it.
 
-    humanChoice = getHumanChoice;
-    computerChoice = getComputerChoice;
+function playRound(humanChoice, computerChoice) { // the parameters are the choices
 
     const userHuman = "Human";
     
@@ -215,37 +224,44 @@ function playRound(humanChoice, computerChoice) { // the parameters are the choi
 
     let winnerStatement;
 
+    // commenting out variables humanChoice and computerChoice doesn't break the code but two prompts are happening still
+
+   // humanChoice = ; // I think humanSelection is prompting twice as a value for humanChoice, same with computerSelection for computerChoice
+
+   // computerChoice = ;
+
      //pseudo code
 
                 // if humanChoice is "rock", check computerChoice and if it is also rock, then it's a tie and
                 // both get 1 point plus an increment. Print the winner with score. but then check all answers
 
-        switch (getHumanChoice) { // switched all humanChoice to getHumanChoice
+        switch (humanChoice) { //changing humanChoice to getHumanChoice gave undefined log
 
             case "rock":
 
-            switch (getComputerChoice) { // switched all computerChoice to getComputerChoice
+            switch (computerChoice) { // changing all computerChoice to getComputerChoice gave undefined log
                 case "rock":
                     humanScore = points;
                     computerScore = points;
                     winnerScore = ++humanScore && ++computerScore;
-                    winnerStatement = "It's a tie! Both " + userHuman + "- Score: " + humanScore + " and " + userComputer + "- Score: " + computerScore + " won!";
+                    winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
                         console.log(winnerStatement);
-                        return winnerStatement;
+                        return humanChoice + " " + computerChoice + " wins";
+                        
             
                 case "paper":
                     humanScore = points;
                     winnerScore = ++humanScore;
-                    winnerStatement = userHuman + "- Score: " + humanScore + " won!";
+                    winnerStatement = userHuman + " - Score:" + humanScore + " won!";
                     console.log(winnerStatement);
-                        return winnerStatement;
+                        return humanChoice + " wins";
             
                 case "scissors":
                     humanScore = points;
                     winnerScore = ++humanScore;
-                    winnerStatement = userHuman + "- Score: " + humanScore + " won!";
+                    winnerStatement = userHuman + " - Score:" + humanScore + " won!";
                     console.log(winnerStatement);
-                    return winnerStatement;
+                    return humanChoice + " wins";
                         
 
                         default:
@@ -255,29 +271,29 @@ function playRound(humanChoice, computerChoice) { // the parameters are the choi
 
             case "paper":
 
-                switch (getComputerChoice) {
+                switch (computerChoice) {
                     case "rock":
                         computerScore = points;
                         winnerScore = ++computerScore;
-                        winnerStatement = userComputer + "- Score: " + computerScore + " won!";
+                        winnerStatement = userComputer + " - Score:" + computerScore + " won!";
                         console.log(winnerStatement);
-                        return winnerStatement;
+                        return computerChoice + " wins";
                 
             
                     case "paper":
                         humanScore = points;
                         computerScore = points;
                         winnerScore = ++humanScore && ++computerScore;
-                        winnerStatement = "It's a tie! Both " + userHuman + "- Score: " + humanScore + " and " + userComputer + "- Score: " + computerScore + " won!";
+                        winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
                         console.log(winnerStatement);
-                        return winnerStatement;
+                        return humanChoice + " " + computerChoice + " wins";
 
                     case "scissors":
                         computerScore = points;
                         winnerScore = ++computerScore;
-                        winnerStatement = userComputer + "- Score: " + computerScore + " won!";
+                        winnerStatement = userComputer + " - Score:" + computerScore + " won!";
                         console.log(winnerStatement);
-                        return winnerStatement;
+                        return computerChoice + " wins";
                         
 
                         default:
@@ -286,29 +302,29 @@ function playRound(humanChoice, computerChoice) { // the parameters are the choi
 
             case "scissors":
 
-                switch (getComputerChoice) {
+                switch (computerChoice) {
                     
                     case "rock":
                         computerScore = points;
                         winnerScore = ++computerScore;
-                        winnerStatement = userComputer + "- Score: " + computerScore + " won!";
+                        winnerStatement = userComputer + " - Score:" + computerScore + " won!";
                         console.log(winnerStatement);
-                        return winnerStatement;
+                        return computerChoice + " wins";
 
                     case "paper":
                         humanScore = points;
                         winnerScore = ++humanScore;
-                        winnerStatement = userHuman + "- Score: " + humanScore + " won!";
+                        winnerStatement = userHuman + " - Score:" + humanScore + " won!";
                         console.log(winnerStatement);
-                        return winnerStatement;
+                        return humanChoice + " wins";
 
                     case "scissors":
                         humanScore = points;
                         computerScore = points;
                         winnerScore = ++humanScore && ++computerScore;
-                        winnerStatement = "It's a tie! Both " + userHuman + "- Score: " + humanScore + " and " + userComputer + "- Score: " + computerScore + " won!";
+                        winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
                         console.log(winnerStatement);
-                        return winnerStatement;
+                        return humanChoice + " " + computerChoice + " wins";
 
                         default:
                             return;
@@ -316,25 +332,27 @@ function playRound(humanChoice, computerChoice) { // the parameters are the choi
 }
 }
 
+
 }
-playRound();
 
-console.log(playRound());
+// below code taken from assignment step 5 example
+
+let humanSelection = humanResult(); // changed getHumanChoice() to humanResult() & const to let
+let computerSelection = computerResult(); // changed getComputerChoice() to computerResult() & const to let 
 
 
-// going to call every possibility
 
-console.log(playRound("rock", "rock")); 
-console.log(playRound("rock", "paper"));
-console.log(playRound("rock", "scissors"));
-console.log(playRound("paper", "rock"));
-console.log(playRound("paper", "paper"));
-console.log(playRound("paper", "scissors"));
-console.log(playRound("scissors", "rock"));
-console.log(playRound("scissors", "paper"));
-console.log(playRound("scissors", "scissors"));
 
-//playRound("rock", 3); // the arguments are the value of the parameters
+//playRound(humanSelection, computerSelection); //commenting out as it didn't do anything
+
+
+console.log(playRound(humanSelection, computerSelection)); // this line was printing the winning message for a second time
+
+// I changed the return from winnerStatement in the switch statements 
+// to the result + "wins" and now it displays the result.
+
+// console.log(playRound); // displays the whole function
+// console.log(playRound()); // undefined
 
 
 // Define two parameters for playRound: humanChoice and computerChoice. Use these two 
