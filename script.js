@@ -62,13 +62,32 @@ function getComputerChoice(choice1, choice2, choice3) {
     choice2 = "paper";
     choice3 = "scissors";
 
-    const compChoice = Math.floor(Math.random() * 3) + 1;
+    const computerChoice = Math.floor(Math.random() * 3) + 1;
 
-    if (compChoice === 1) {
+    // adding a mapping of computerChoice number values to the string values they correspond to for step 5:
+    // const map1 = new Map();
+    // map1.set("a", 1);
+    // map1.set("b", 2);
+    // map1.set("c", 3);
+    
+    const computerChoiceMap = new Map();
+
+    computerChoiceMap.set("rock", 1);
+    computerChoiceMap.set("paper", 2);
+    computerChoiceMap.set("scissors", 3);
+
+    // testing the new number to string map
+// console.log(computerChoiceMap.get("rock")); // yes this works
+// console.log(computerChoiceMap.get("paper")); //yes this works
+// console.log(computerChoiceMap.get("scissors")); // yes this works
+
+// replacing computerChoice numbers with string values in the if statements didn't do anything
+
+    if (computerChoice === 1) { // changed compChoice to computerChoice
         console.log(choice1);
         return choice1;
 
-    } else if (compChoice === 2) {
+    } else if (computerChoice === 2) {
         console.log(choice2);
         return choice2;
 
@@ -78,9 +97,12 @@ function getComputerChoice(choice1, choice2, choice3) {
 
     }
 
+
 }
 
 getComputerChoice(); // it works.
+
+
 
 
 
@@ -122,31 +144,44 @@ function getHumanChoice(choice1, choice2, choice3) {
     choice2 = "paper";
     choice3 = "scissors";
 
-const humanChoice = prompt("please type in either rock, paper or scissors in lowercase to play");
+let humanChoice = prompt("please type in either rock, paper or scissors in lowercase to play"); // changed const to let
 
-if (humanChoice === "rock") {
+// going to make humanChoice input case insensitive for step 5
+let standardChoice = choice1 || choice2 || choice3;
+
+let ignoreCase = standardChoice.localeCompare(humanChoice, "en", { sensitivity: "base" });
+
+   // console.log(typeof ignoreCase); // says ignoreCase is a number? now I must convert a number to string by mapping again
+
+let humanChoiceMap = new Map();
+
+humanChoiceMap.set(0, "rock");
+humanChoiceMap.set(1, "paper"); 
+humanChoiceMap.set(-1, "scissors");
+
+if (ignoreCase === 0) { 
     
-    console.log(choice1);
-return choice1;
+    console.log(choice1); // choice1 changed to ignoreCase which outputs 0
+    return choice1;
 
-} else if (humanChoice === "paper") {
-    console.log(choice2);
+
+} else if (ignoreCase === 1) {
+    console.log(choice2); // ignoreCase outputs 1
     return choice2;
 
-} else if (humanChoice === "scissors") { // had to define this for step 5
-    console.log(choice3);
+} else if (ignoreCase === -1) { // had to define this for step 5
+    console.log(choice3); // ignoreCase outputs -1
     return choice3;
 
 } else { // had to add this for step 5
-    console.log();
     return;
 }
 
 
-
 }
 
-getHumanChoice();
+getHumanChoice(); // it works
+
 
 
 
@@ -165,11 +200,148 @@ getHumanChoice();
 
 // Create a new function named playRound
 
+function playRound(humanChoice, computerChoice) { // the parameters are the choices
+
+    humanChoice = getHumanChoice;
+    computerChoice = getComputerChoice;
+
+    const userHuman = "Human";
+    
+    const userComputer = "The Computer";
+
+    let points = 1;
+
+    let winnerScore = 0;
+
+    let winnerStatement;
+
+     //pseudo code
+
+                // if humanChoice is "rock", check computerChoice and if it is also rock, then it's a tie and
+                // both get 1 point plus an increment. Print the winner with score. but then check all answers
+
+        switch (getHumanChoice) { // switched all humanChoice to getHumanChoice
+
+            case "rock":
+
+            switch (getComputerChoice) { // switched all computerChoice to getComputerChoice
+                case "rock":
+                    humanScore = points;
+                    computerScore = points;
+                    winnerScore = ++humanScore && ++computerScore;
+                    winnerStatement = "It's a tie! Both " + userHuman + "- Score: " + humanScore + " and " + userComputer + "- Score: " + computerScore + " won!";
+                        console.log(winnerStatement);
+                        return winnerStatement;
+            
+                case "paper":
+                    humanScore = points;
+                    winnerScore = ++humanScore;
+                    winnerStatement = userHuman + "- Score: " + humanScore + " won!";
+                    console.log(winnerStatement);
+                        return winnerStatement;
+            
+                case "scissors":
+                    humanScore = points;
+                    winnerScore = ++humanScore;
+                    winnerStatement = userHuman + "- Score: " + humanScore + " won!";
+                    console.log(winnerStatement);
+                    return winnerStatement;
+                        
+
+                        default:
+                            return;
+            
+                    }
+
+            case "paper":
+
+                switch (getComputerChoice) {
+                    case "rock":
+                        computerScore = points;
+                        winnerScore = ++computerScore;
+                        winnerStatement = userComputer + "- Score: " + computerScore + " won!";
+                        console.log(winnerStatement);
+                        return winnerStatement;
+                
+            
+                    case "paper":
+                        humanScore = points;
+                        computerScore = points;
+                        winnerScore = ++humanScore && ++computerScore;
+                        winnerStatement = "It's a tie! Both " + userHuman + "- Score: " + humanScore + " and " + userComputer + "- Score: " + computerScore + " won!";
+                        console.log(winnerStatement);
+                        return winnerStatement;
+
+                    case "scissors":
+                        computerScore = points;
+                        winnerScore = ++computerScore;
+                        winnerStatement = userComputer + "- Score: " + computerScore + " won!";
+                        console.log(winnerStatement);
+                        return winnerStatement;
+                        
+
+                        default:
+                            return;
+        }
+
+            case "scissors":
+
+                switch (getComputerChoice) {
+                    
+                    case "rock":
+                        computerScore = points;
+                        winnerScore = ++computerScore;
+                        winnerStatement = userComputer + "- Score: " + computerScore + " won!";
+                        console.log(winnerStatement);
+                        return winnerStatement;
+
+                    case "paper":
+                        humanScore = points;
+                        winnerScore = ++humanScore;
+                        winnerStatement = userHuman + "- Score: " + humanScore + " won!";
+                        console.log(winnerStatement);
+                        return winnerStatement;
+
+                    case "scissors":
+                        humanScore = points;
+                        computerScore = points;
+                        winnerScore = ++humanScore && ++computerScore;
+                        winnerStatement = "It's a tie! Both " + userHuman + "- Score: " + humanScore + " and " + userComputer + "- Score: " + computerScore + " won!";
+                        console.log(winnerStatement);
+                        return winnerStatement;
+
+                        default:
+                            return;
+
+}
+}
+
+}
+playRound();
+
+console.log(playRound());
+
+
+// going to call every possibility
+
+console.log(playRound("rock", "rock")); 
+console.log(playRound("rock", "paper"));
+console.log(playRound("rock", "scissors"));
+console.log(playRound("paper", "rock"));
+console.log(playRound("paper", "paper"));
+console.log(playRound("paper", "scissors"));
+console.log(playRound("scissors", "rock"));
+console.log(playRound("scissors", "paper"));
+console.log(playRound("scissors", "scissors"));
+
+//playRound("rock", 3); // the arguments are the value of the parameters
+
+
 // Define two parameters for playRound: humanChoice and computerChoice. Use these two 
 // parameters to take the human and computer choices as arguments.
 
 // Make your function’s humanChoice parameter case-insensitive so that players can 
-// input “rock”, “ROCK”, “RocK”, or other variations.
+// input “rock”, “ROCK”, “RocK”, or other variations. (did this inside of getHumanChoice();)
 
     // pseudocode 
     /* 
@@ -230,6 +402,8 @@ SEQUENCE
 
 */
 
+
+/* old code - coudln't get console.log to run on if statements
 
 function playRound(humanChoice, computerChoice) {
 
@@ -322,7 +496,7 @@ function playRound(humanChoice, computerChoice) {
             break;
 
             case "Human":
-*/
+*/ /*
                else if (theRightChoice === "rock" && computerChoice === 2) { // || theRightChoice === "rock" && computerChoice === 3 || theRightChoice === "scissors" &&computerChoice === 2
                     humanScore = points;
                     winnerScore = ++humanScore;
@@ -350,7 +524,7 @@ function playRound(humanChoice, computerChoice) {
             break;
 
                 case "The Computer": 
-           */     
+           */  /*   
                else if (theRightChoice === "paper" && computerChoice === 1) {
                     computerScore = points;
                     winnerScore = ++computerScore;
@@ -373,7 +547,7 @@ function playRound(humanChoice, computerChoice) {
                     console.log();
                 } 
 
-           
+           */
             
 
                 /*    break;
@@ -387,8 +561,9 @@ function playRound(humanChoice, computerChoice) {
 //console.log(theRightChoice === "rock" && computerChoice === 1 && theRightChoice === computerChoice);
 //console.log(theRightChoice === "scissors" && computerChoice === 3 && theRightChoice === computerChoice);
 
-
+/*
 
 }
 
-playRound();
+playRound(); */
+
