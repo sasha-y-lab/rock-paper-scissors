@@ -52,10 +52,191 @@ SET choice1 as "rock", choice2 as "paper", choice3 as "scissors";
 
 //global scope
 
+const userHuman = "Human";
+    
+const userComputer = "The Computer";
+
 let humanScore = 0;
 let computerScore = 0;
 
 
+
+// external function to carry values of variables: like score
+
+ 
+ let numberOfRounds = 1;
+ let increaseRoundsByOne; // = ++numberOfRounds;
+let winnerScore;
+
+let winner;
+let loser;
+
+let updatedHumanScore;
+let updatedComputerScore;
+
+
+/* might be redundant
+
+function scoreOfWinner(winnerScore) {
+    // `Winner Score: ${winnerScore}`; don't want this printed
+    return winnerScore;
+}
+// doesn't need a variable to put into
+
+*/
+
+
+/* not sure if this is needed
+ function declareWinner(winner, loser) {
+   // `Winner: ${winner}, Loser: ${loser}`;
+    return winner & loser;
+
+ } 
+ //doesn't need a variable to put into or an actual code in it. It's just passing values
+*/
+
+ /*
+ this could be not needed
+ function howMuchRounds(numberOfRounds) {
+   // `Round: ${numberOfRounds}`;
+    return numberOfRounds;
+
+}
+
+// needs a variabe to go into or an actual code in it. It's just passing values
+
+*/
+
+/*
+
+// this function waits for 10 seconds - for playRoundAgain function
+
+let x;
+
+function wait10Seconds(x) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(x);
+      }, 10000);
+    });
+  }
+// this waits 
+  async function f1() {
+  await wait10Seconds(10);
+    
+  }
+
+  // call f1(); in playRoundAgain()
+  
+*/
+
+
+
+function increaseRounds(increaseRoundsByOne) {
+   // `increaseRoundsByOne: ${increaseRoundsByOne}`;
+    // show how to increase rounds
+    
+    if (numberOfRounds === 1) {
+        increaseRoundsByOne = ++numberOfRounds;
+    
+    } else if (numberOfRounds === 2) {
+        increaseRoundsByOne = numberOfRounds + 2;
+    } else if (numberOfRounds === 3) {
+        increaseRoundsByOne = numberOfRounds + 3;
+    } else if (numberOfRounds === 4) {
+        increaseRoundsByOne = numberOfRounds + 4;
+    } else if (numberOfRounds === 5) {
+        increaseRoundsByOne = numberOfRounds + 5;
+    } else {
+        return;
+    }
+   
+   return increaseRoundsByOne;
+        
+     }
+
+    // let roundX = increaseRounds; 
+
+
+
+
+
+// processes the total score
+
+function processScoreResult(updatedHumanScore, updatedComputerScore) {
+   // console.log(`Updated Human Score: ${updatedHumanScore}, Updated Computer Score: ${updatedComputerScore}`);
+    
+    if (numberOfRounds === 2) {
+        
+        if (winner === userHuman) {
+
+            updatedHumanScore = ++humanScore;
+
+
+        } else if (winner === userComputer) {
+            updatedComputerScore = ++computerScore;
+        } else {
+            return;
+        }
+        
+       // console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
+    } else if (numberOfRounds === 3) {
+
+        if (winner === userHuman) {
+
+            updatedHumanScore = humanScore + 2;
+
+
+        } else if (winner === userComputer) {
+            updatedComputerScore = computerScore + 2;
+        } else {
+            return;
+        }
+
+    } else if (numberOfRounds === 4) {
+
+        if (winner === userHuman) {
+
+            updatedHumanScore = humanScore + 3;
+
+
+        } else if (winner === userComputer) {
+            updatedComputerScore = computerScore + 3;
+        } else {
+            return;
+        }
+ 
+    } else if (numberOfRounds === 5) {
+
+        if (winner === userHuman) {
+
+            updatedHumanScore = humanScore + 4;
+
+
+        } else if (winner === userComputer) {
+            updatedComputerScore = computerScore + 4;
+
+        } else {
+            return;
+        }
+
+        return "Final Score: " + userHuman + ": " + updatedHumanScore + ", " + userComputer + ": " + updatedComputerScore;
+    
+    } else {
+        return;
+    }
+
+    
+}
+
+// total score needs a varaible to go into // unfortunatly it didn't work
+
+// let totalScore = processScoreResult;
+
+
+
+
+// start of other functions for main game
 
 function getComputerChoice(choice1, choice2, choice3) {
     choice1 = "rock";
@@ -135,11 +316,6 @@ SET choice1 as "rock", choice2 as "paper", choice3 as "scissors";
                                 THEN the human's choice is scissors;
                                 ENDIF
                                     CALL getHumanChoice RETURNING DISPLAY of a random choice of either rock, paper or scissors.
-
-
-
-
-
 
 */
 
@@ -221,96 +397,25 @@ function playGame() {
 
 function playRound(humanChoice, computerChoice) { // the parameters are the choices
 
-    const userHuman = "Human";
-    
-    const userComputer = "The Computer";
-
-
-    
    
 
+    /*
+   // let points = 0;
 
-// external function to carry values of variables: like score
+   // humanScore = points;
+   // computerScore = points; redundant */
 
- 
- let numberOfRounds = 1;
- let increaseRoundsByOne = ++numberOfRounds;
- let roundX = increaseRoundsByOne;
-
-
- function declareWinner(winner, loser) {
-    `Winner: ${winner}, loser: ${loser}`;
-    return winner & loser;
-
- } 
-
- function howMuchRounds(numberOfRounds) {
-    `numberOfRounds: ${numberOfRounds}`;
-    return numberOfRounds;
-
-}
-
-
-
- function playRoundAgain(roundX) {
-`roundX: ${roundX}`;
-
-function processScoreResult(updatedHumanScore, updatedComputerScore) {
-    console.log(`updatedHumanScore: ${updatedHumanScore}, updatedComputerScore: ${updatedComputerScore}`);
-    return updatedHumanScore && updatedComputerScore;
-}
-
-
-
-
-function increaseRounds(increaseRoundsByOne) {
-    `increaseRoundsByOne: ${increaseRoundsByOne}`;
-    return increaseRoundsByOne;
-        
-     }
-
-
-
-  if (numberOfRounds >= 1 && numberOfRounds <= 4) {
-        // play this round and add this rounds score to the winner's score
-        increaseRounds(increaseRoundsByOne);
-        playRound((humanSelection, computerSelection));
-        
-        if (winner === userHuman) {
-
-            updatedHumanScore = ++i;
-
-
-        } else if (winner === userComputer) {
-            updatedComputerScore = ++i;
-        } else {
-            return;
-        }
-        
-        console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
-    } 
-    
-    return roundX;
-
-}
-console.log(playRoundAgain(roundX));
-
-
-
-    let points = 0;
-
-    let humanScore = points;
-    let computerScore = points;
-
-    let winnerScore;
+   
 
     let winnerStatement;
 
     let roundScore;
-
+/*
     let choice1 = "rock";
     let choice2 = "paper";
     let choice3 = "scissors";
+
+    */
 
     // commenting out variables humanChoice and computerChoice doesn't break the code but two prompts are happening still
 
@@ -359,16 +464,13 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                     updatedComputerScore = 1;
                     winner = userHuman && userComputer;
                     loser = "No one";
-                    numberOfRounds = 1;
+                    
 
                     roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                     winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement);
-                        
-                        processScoreResult(updatedHumanScore, updatedComputerScore);
-                        declareWinner(winner, loser);
-                        howMuchRounds(numberOfRounds);
-                        return choice1 + " wins! " + roundScore; // took out humanChoice + " " + computerChoice
+                        console.log(winnerStatement + " | " + roundScore);
+                        return playRoundAgain();
+                      //  return choice1 + " wins! " + roundScore; // took out humanChoice + " " + computerChoice
                         
 
                         
@@ -380,16 +482,16 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                    updatedComputerScore = 0;
                    winner = userHuman;
                    loser = userComputer;
-                   numberOfRounds = 1;
+                   
 
                     roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                     winnerStatement = userHuman + " - Score:" + humanScore + " won!";
-                    console.log(winnerStatement);
-                    processScoreResult(updatedHumanScore, updatedComputerScore);
-                    declareWinner(winner, loser);
-                    howMuchRounds(numberOfRounds);
-                        return humanChoice + " wins! " + roundScore;
-            
+                    console.log(winnerStatement + " | " + roundScore);
+                    return playRoundAgain();
+                    //    return humanChoice + " wins! " + roundScore;
+                   
+
+
                 case "scissors":
                    // humanScore = points;
                    winnerScore = ++humanScore;
@@ -397,15 +499,13 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                    updatedComputerScore = 0;
                     winner = userHuman;
                     loser = userComputer;
-                    numberOfRounds = 1;
+                   
 
                     roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                     winnerStatement = userHuman + " - Score:" + humanScore + " won!";
-                    console.log(winnerStatement);
-                    processScoreResult(updatedHumanScore, updatedComputerScore);
-                    declareWinner(winner, loser);
-                    howMuchRounds(numberOfRounds);
-                    return humanChoice + " wins! " + roundScore;
+                    console.log(winnerStatement + " | " + roundScore);
+                    return playRoundAgain();
+                  //  return humanChoice + " wins! " + roundScore;
                         
                     
 
@@ -426,16 +526,15 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                     updatedComputerScore = 1;
                     winner = userComputer;
                     loser = userHuman;
-                    numberOfRounds = 1;
+                    
 
                         roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                         winnerStatement = userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement);
-                        processScoreResult(updatedHumanScore, updatedComputerScore);
-                        declareWinner(winner, loser);
-                        howMuchRounds(numberOfRounds);
-                        return computerChoice + " wins! " + roundScore;
-                
+                        console.log(winnerStatement + " | " + roundScore);
+                        return playRoundAgain();
+                      //  return computerChoice + " wins! " + roundScore;
+                      
+                      
             
                     case "paper":
                         //humanScore = points;
@@ -445,15 +544,15 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                         updatedComputerScore = 1;
                         winner = userHuman && userComputer;
                         loser = "No one";
-                        numberOfRounds = 1;
+                        
                         
                         roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                         winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement);
-                        processScoreResult(updatedHumanScore, updatedComputerScore);
-                        declareWinner(winner, loser);
-                        howMuchRounds(numberOfRounds);
-                        return choice2 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
+                        console.log(winnerStatement + " | " +roundScore);
+                        return playRoundAgain();
+                       // return choice2 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
+                       
+
 
                     case "scissors":
                         // computerScore = points;
@@ -462,16 +561,15 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                         updatedComputerScore = 1;
                         winner = userComputer;
                         loser = userHuman;
-                        numberOfRounds;
+                        
 
                         roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                         winnerStatement = userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement);
-                        processScoreResult(updatedHumanScore, updatedComputerScore);
-                        declareWinner(winner, loser);
-                        howMuchRounds(numberOfRounds);
-                        return computerChoice + " wins! " + roundScore;
+                        console.log(winnerStatement + " | " + roundScore);
+                        return playRoundAgain();
+                      // return computerChoice + " wins! " + roundScore;
                         
+
                         
                         default:
                             return;
@@ -488,15 +586,15 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                         updatedComputerScore = 1;
                         winner = userComputer;
                         loser = userHuman;
-                        numberOfRounds = 1;
+                        
                       
                         roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                         winnerStatement = userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement);
-                        processScoreResult(updatedHumanScore, updatedComputerScore);
-                        declareWinner(winner, loser);
-                        howMuchRounds(numberOfRounds);
-                        return computerChoice + " wins! " + roundScore;
+                        console.log(winnerStatement + " | " + roundScore);
+                        return playRoundAgain();
+                       // return computerChoice + " wins! " + roundScore;
+                       
+
 
                     case "paper":
                        // humanScore = points;
@@ -506,15 +604,15 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                         updatedComputerScore = 0;
                         winner = userHuman;
                         loser = userComputer;
-                        numberOfRounds = 1;
+                        
 
                         roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                         winnerStatement = userHuman + " - Score:" + humanScore + " won!";
-                        console.log(winnerStatement);
-                        processScoreResult(updatedHumanScore, updatedComputerScore);
-                        declareWinner(winner, loser);
-                        howMuchRounds(numberOfRounds);
-                        return humanChoice + " wins! " + roundScore;
+                        console.log(winnerStatement + " | " + roundScore);
+                        return playRoundAgain();
+                      //  return humanChoice + " wins! " + roundScore;
+                      
+
 
                     case "scissors":
                         //humanScore = points;
@@ -526,15 +624,14 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                         updatedComputerScore = 1;
                         winner = userHuman && userComputer;
                         loser = "No one";
-                        numberOfRounds = 1;
+                        
                         
                         roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
                         winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement);
-                        processScoreResult(updatedHumanScore, updatedComputerScore);
-                        declareWinner(winner, loser);
-                        howMuchRounds(numberOfRounds)
-                        return choice3 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
+                        console.log(winnerStatement + " | " + roundScore);
+                        return playRoundAgain();
+                        // return choice3 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
+                        
 
                                             
                         default:
@@ -544,15 +641,6 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
 
     
 } // main switch endbacket 
-
-
-
- /* //This is not working
-
-// call processScoreResult function
-processScoreResult(updatedHumanScore, updatedComputerScore);
-console.log(processScoreResult(updatedHumanScore, updatedComputerScore)); 
-*/
 
 
 
@@ -571,7 +659,91 @@ console.log(playRound(humanSelection, computerSelection)); // this line was prin
 
 
 
+// start playRoundAgain function
 
+function playRoundAgain() {
+    //`Round: ${roundX}, Total Score: ${totalScore}`; don't want this printed yet
+    
+    // play 4 more rounds without using loops
+    
+    //pseudo code
+    /*
+    SEQUENCE
+    IF round one has completed
+    THEN play again
+    ELSEIF round two has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 3 has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 4 has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 5 has completed
+    Then update rounds and score but this time also print total score.
+    
+    */
+
+    
+
+    // need to add a wait 10 seconds before playing
+    
+    if (numberOfRounds === 1) { // updatedHumanScore <= 1 && updatedComputerScore <= 1
+        
+       setTimeout(() => {
+            
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+
+    }, 10000); // 10 seconds
+    
+    } else if (numberOfRounds === 2) {
+        
+        setTimeout(() => {
+
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+    
+    }, 10000); // 10 seconds
+
+    } else if (numberOfRounds === 3) {
+        
+        setTimeout(() => {
+
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+
+    }, 10000); // 10 seconds
+
+    } else if (numberOfRounds === 4) {
+        
+        setTimeout(() => {
+
+        increaseRounds(increaseRoundsByOne)
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+        console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
+
+    }, 10000); // 10 seconds
+
+    } else {
+        return;
+    }
+    
+    
+        // return roundX && totalScore;
+    
+} // end of playRoundAgain
+
+
+
+} // end of playGame
+
+
+playGame();
 
 // I changed the return from winnerStatement in the switch statements 
 // to the result + "wins" and now it displays the result.
@@ -688,9 +860,18 @@ playRoundFive();
     
 */
 
-} // this is the playGame function endbracket
 
-playGame();
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Define two parameters for playRound: humanChoice and computerChoice. Use these two 
@@ -938,3 +1119,4 @@ CALL playRound function 4 times in playGame function and after each call state t
 userHuman and userComputer
 
 */
+
