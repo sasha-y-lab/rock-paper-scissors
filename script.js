@@ -52,9 +52,9 @@ SET choice1 as "rock", choice2 as "paper", choice3 as "scissors";
 
 //global scope
 
-const userHuman = "Human";
+// const userHuman = "Human";
     
-const userComputer = "The Computer";
+// const userComputer = "The Computer";
 
 let humanScore = 0;
 let computerScore = 0;
@@ -66,7 +66,7 @@ let computerScore = 0;
  
  let numberOfRounds = 1;
  let increaseRoundsByOne; // = ++numberOfRounds;
-let winnerScore;
+//let winnerScore;
 
 let winner;
 let loser;
@@ -86,9 +86,9 @@ function scoreOfWinner(winnerScore) {
 */
 
 
-/* not sure if this is needed
+/* isn't needed
  function declareWinner(winner, loser) {
-   // `Winner: ${winner}, Loser: ${loser}`;
+    `Winner: ${winner}, Loser: ${loser}`;
     return winner & loser;
 
  } 
@@ -140,13 +140,13 @@ function increaseRounds(increaseRoundsByOne) {
         increaseRoundsByOne = ++numberOfRounds;
     
     } else if (numberOfRounds === 2) {
-        increaseRoundsByOne = numberOfRounds + 2;
+        increaseRoundsByOne = ++numberOfRounds;
     } else if (numberOfRounds === 3) {
-        increaseRoundsByOne = numberOfRounds + 3;
+        increaseRoundsByOne = ++numberOfRounds;
     } else if (numberOfRounds === 4) {
-        increaseRoundsByOne = numberOfRounds + 4;
+        increaseRoundsByOne = ++numberOfRounds;
     } else if (numberOfRounds === 5) {
-        increaseRoundsByOne = numberOfRounds + 5;
+        increaseRoundsByOne = ++numberOfRounds;
     } else {
         return;
     }
@@ -220,13 +220,13 @@ function processScoreResult(updatedHumanScore, updatedComputerScore) {
             return;
         }
 
-        return "Final Score: " + userHuman + ": " + updatedHumanScore + ", " + userComputer + ": " + updatedComputerScore;
+        console.log("Final Score: " + userHuman + ": " + updatedHumanScore + ", " + userComputer + ": " + updatedComputerScore);
     
     } else {
         return;
     }
 
-    
+    return [updatedHumanScore, updatedComputerScore];
 }
 
 // total score needs a varaible to go into // unfortunatly it didn't work
@@ -238,58 +238,136 @@ function processScoreResult(updatedHumanScore, updatedComputerScore) {
 
 // start of other functions for main game
 
-function getComputerChoice(choice1, choice2, choice3) {
-    choice1 = "rock";
-    choice2 = "paper";
-    choice3 = "scissors";
+//moved getComputerChoice
 
-    const computerChoice = Math.floor(Math.random() * 3) + 1;
+// added playRoundAgain;
 
-    // adding a mapping of computerChoice number values to the string values they correspond to for step 5:
-    // const map1 = new Map();
-    // map1.set("a", 1);
-    // map1.set("b", 2);
-    // map1.set("c", 3);
+// start playRoundAgain function
+
+function playRoundAgain() {
+    //`Round: ${roundX}, Total Score: ${totalScore}`; don't want this printed yet
     
-    const computerChoiceMap = new Map();
+    // play 4 more rounds without using loops
+    
+    //pseudo code
+    /*
+    SEQUENCE
+    IF round one has completed
+    THEN play again
+    ELSEIF round two has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 3 has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 4 has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 5 has completed
+    Then update rounds and score but this time also print total score.
+    
+    */
 
-    computerChoiceMap.set("rock", 1);
-    computerChoiceMap.set("paper", 2);
-    computerChoiceMap.set("scissors", 3);
+    
 
-    // testing the new number to string map
-// console.log(computerChoiceMap.get("rock")); // yes this works
-// console.log(computerChoiceMap.get("paper")); //yes this works
-// console.log(computerChoiceMap.get("scissors")); // yes this works
+    // need to add a wait 10 seconds before playing
+    
+    if (updatedHumanScore <= 1 && updatedComputerScore <= 1 && numberOfRounds === 1) { 
+        
+        function refreshPlay() {
+
+       
+      const wait10Seconds =  setTimeout(() => {
+          
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+    
 
 
+    }, 10000); // 10 seconds
 
-    if (computerChoice === 1) { // changed compChoice to computerChoice
-        console.log(choice1);
-        return choice1;
+  clearTimeout(wait10Seconds);
+  // need to return some value
+  return wait10Seconds;
 
-    } else if (computerChoice === 2) {
-        console.log(choice2);
-        return choice2;
+}
+  //return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+ // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
+   // return wait10Seconds;
 
-    } else if (computerChoice === 3) {
-        console.log(choice3);
-        return choice3;
+
+    } else if (updatedHumanScore <= 2 && updatedComputerScore <= 2 && numberOfRounds === 2) {
+        
+        refreshPlay();
+/*
+        const wait10Seconds = setTimeout(() => {
+
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+    
+    }, 10000); // 10 seconds
+    clearTimeout(wait10Seconds); */
+   // return wait10Seconds;
+    //return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
+   // return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+
+
+    } else if (updatedHumanScore <= 3 && updatedComputerScore <= 3 && numberOfRounds === 3) {
+        
+        refreshPlay();
+
+        /*
+        const wait10Seconds = setTimeout(() => {
+
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+
+    }, 10000); // 10 seconds
+    clearTimeout(wait10Seconds);
+ */
+
+   // return wait10Seconds;
+   //return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+   // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
+
+    } else if (updatedHumanScore <= 4 && updatedComputerScore <= 4 && numberOfRounds === 4) {
+        
+        refreshPlay();
+        return console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
+
+    //    function endPlay() {
+/*
+        const wait10Seconds = setTimeout(() => {
+
+        increaseRounds(increaseRoundsByOne)
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+        console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
+
+    }, 10000); // 10 seconds
+   return clearTimeout(wait10Seconds);
+*/
+//} // function end play endbrackets
+
+// endPlay();
+   // return wait10Seconds;
+   // return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+  // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
 
     } else {
         return;
     }
+    
+    return refreshPlay();
+        // must return something to keep it defined and not undefined.
+
+        // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)]
 
 
-}
-
-// commenting out calling the function as it keeps executing without a log
-// getComputerChoice(); // it works.
-
-//commenting a variable to put getComputerChoice result in
-
-let computerResult = getComputerChoice;
-
+    
+} // end of playRoundAgain
 
 
 // Now write the logic to get the human choice
@@ -320,55 +398,7 @@ SET choice1 as "rock", choice2 as "paper", choice3 as "scissors";
 */
 
 
-function getHumanChoice(choice1, choice2, choice3) {
-    choice1 = "rock";
-    choice2 = "paper";
-    choice3 = "scissors";
-
-let humanChoice = prompt("please type in either rock, paper or scissors in lowercase to play"); // changed const to let
-
-// going to make humanChoice input case insensitive for step 5
-let standardChoice = choice1 || choice2 || choice3;
-
-let ignoreCase = standardChoice.localeCompare(humanChoice, "en", { sensitivity: "base" });
-
-   // console.log(typeof ignoreCase); // says ignoreCase is a number? now I must convert a number to string by mapping again
-
-let humanChoiceMap = new Map();
-
-humanChoiceMap.set(0, "rock");
-humanChoiceMap.set(1, "paper"); 
-humanChoiceMap.set(-1, "scissors");
-
-if (ignoreCase === 0) { 
-    
-    console.log(choice1); // choice1 changed to ignoreCase which outputs 0
-    return choice1;
-
-
-} else if (ignoreCase === 1) {
-    console.log(choice2); // ignoreCase outputs 1
-    return choice2;
-
-} else if (ignoreCase === -1) { // had to define this for step 5
-    console.log(choice3); // ignoreCase outputs -1
-    return choice3;
-
-} else { // had to add this for step 5
-    return;
-}
-
-
-}
-
-// commenting out calling the function as it keeps executing without a log
-// getHumanChoice(); // it works
-
-//commenting a variable to put getHumanChoice result in
-
-let humanResult = getHumanChoice;
-
-
+//moved getHumanchoice
 
 
 // Step 4: Declare the players score variables
@@ -394,10 +424,120 @@ let humanResult = getHumanChoice;
 
 function playGame() {
 
+    
+
+    function getHumanChoice(choice1, choice2, choice3) {
+        choice1 = "rock";
+        choice2 = "paper";
+        choice3 = "scissors";
+    
+    let humanChoice = prompt("please type in either rock, paper or scissors in lowercase to play"); // changed const to let
+    
+    // going to make humanChoice input case insensitive for step 5
+    let standardChoice = choice1 || choice2 || choice3;
+    
+    let ignoreCase = standardChoice.localeCompare(humanChoice, "en", { sensitivity: "base" });
+    
+       // console.log(typeof ignoreCase); // says ignoreCase is a number? now I must convert a number to string by mapping again
+    
+    let humanChoiceMap = new Map();
+    
+    humanChoiceMap.set(0, "rock");
+    humanChoiceMap.set(1, "paper"); 
+    humanChoiceMap.set(-1, "scissors");
+    
+    if (ignoreCase === 0) { 
+        
+        console.log(choice1); // choice1 changed to ignoreCase which outputs 0
+        return choice1;
+    
+    
+    } else if (ignoreCase === 1) {
+        console.log(choice2); // ignoreCase outputs 1
+        return choice2;
+    
+    } else if (ignoreCase === -1) { // had to define this for step 5
+        console.log(choice3); // ignoreCase outputs -1
+        return choice3;
+    
+    } else { // had to add this for step 5
+        return;
+    }
+    
+    
+    }
+    
+    // commenting out calling the function as it keeps executing without a log
+    // getHumanChoice(); // it works
+    
+    //commenting a variable to put getHumanChoice result in
+    
+    let humanResult = getHumanChoice;
+    
+
+
+    
+    function getComputerChoice(choice1, choice2, choice3) {
+        choice1 = "rock";
+        choice2 = "paper";
+        choice3 = "scissors";
+    
+      let computerChoice = Math.floor(Math.random() * 3) + 1;
+    
+        // adding a mapping of computerChoice number values to the string values they correspond to for step 5:
+        // const map1 = new Map();
+        // map1.set("a", 1);
+        // map1.set("b", 2);
+        // map1.set("c", 3);
+        
+        let computerChoiceMap = new Map();
+    
+        computerChoiceMap.set("rock", 1);
+        computerChoiceMap.set("paper", 2);
+        computerChoiceMap.set("scissors", 3);
+    
+        // testing the new number to string map
+    // console.log(computerChoiceMap.get("rock")); // yes this works
+    // console.log(computerChoiceMap.get("paper")); //yes this works
+    // console.log(computerChoiceMap.get("scissors")); // yes this works
+    
+    
+    
+        if (computerChoice === 1) { // changed compChoice to computerChoice
+            console.log(choice1);
+            return choice1;
+    
+        } else if (computerChoice === 2) {
+            console.log(choice2);
+            return choice2;
+    
+        } else if (computerChoice === 3) {
+            console.log(choice3);
+            return choice3;
+    
+        } else {
+            return;
+        }
+    
+    
+    }
+    
+    // commenting out calling the function as it keeps executing without a log
+    // getComputerChoice(); // it works.
+    
+    //commenting a variable to put getComputerChoice result in
+    
+    let computerResult = getComputerChoice;
+    
 
 function playRound(humanChoice, computerChoice) { // the parameters are the choices
 
+   // computerChoice = getComputerChoice();
+  // humanChoice = getHumanChoice();
    
+  const userHuman = "Human";
+    
+const userComputer = "The Computer";
 
     /*
    // let points = 0;
@@ -405,7 +545,7 @@ function playRound(humanChoice, computerChoice) { // the parameters are the choi
    // humanScore = points;
    // computerScore = points; redundant */
 
-   
+   let scoreResult;
 
     let winnerStatement;
 
@@ -459,17 +599,20 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                 case "rock":
                     //humanScore = points;
                     //computerScore = points;
-                    winnerScore = ++humanScore && ++computerScore;
+                   // winnerScore = (humanScore + 1) && (computerScore + 1);
                     updatedHumanScore = 1;
                     updatedComputerScore = 1;
                     winner = userHuman && userComputer;
                     loser = "No one";
                     
 
-                    roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                    winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement + " | " + roundScore);
-                        return playRoundAgain();
+                    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                    winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+                    scoreResult = winnerStatement + " | " + roundScore;  
+                    
+                    //  console.log(winnerStatement + " | " + roundScore);
+                    //   playRoundAgain();
+                       break;
                       //  return choice1 + " wins! " + roundScore; // took out humanChoice + " " + computerChoice
                         
 
@@ -477,36 +620,38 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
             
                 case "paper":
                    // humanScore = points;
-                   winnerScore = ++humanScore;
+                  // winnerScore = humanScore + 1;
                    updatedHumanScore = 1;
                    updatedComputerScore = 0;
                    winner = userHuman;
                    loser = userComputer;
                    
 
-                    roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                    winnerStatement = userHuman + " - Score:" + humanScore + " won!";
-                    console.log(winnerStatement + " | " + roundScore);
-                    return playRoundAgain();
+                    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                    winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+                    scoreResult = winnerStatement + " | " + roundScore;  
+                  //  console.log(winnerStatement + " | " + roundScore);
+                  //  playRoundAgain();
                     //    return humanChoice + " wins! " + roundScore;
-                   
+                    break;
 
 
                 case "scissors":
                    // humanScore = points;
-                   winnerScore = ++humanScore;
+                  // winnerScore = humanScore + 1;
                    updatedHumanScore = 1;
                    updatedComputerScore = 0;
                     winner = userHuman;
                     loser = userComputer;
                    
 
-                    roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                    winnerStatement = userHuman + " - Score:" + humanScore + " won!";
-                    console.log(winnerStatement + " | " + roundScore);
-                    return playRoundAgain();
+                    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                    winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+                    scoreResult = winnerStatement + " | " + roundScore;  
+                   // console.log(winnerStatement + " | " + roundScore);
+                   // playRoundAgain();
                   //  return humanChoice + " wins! " + roundScore;
-                        
+                  break;
                     
 
                         default:
@@ -520,7 +665,7 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                 switch (computerChoice) {
                     case "rock":
                         // computerScore = points;
-                         winnerScore = ++computerScore;
+                        // winnerScore = computerScore + 1;
 
                          updatedHumanScore = 0;
                     updatedComputerScore = 1;
@@ -528,47 +673,50 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                     loser = userHuman;
                     
 
-                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                        winnerStatement = userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement + " | " + roundScore);
-                        return playRoundAgain();
+                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                      //  console.log(winnerStatement + " | " + roundScore);
+                      //  playRoundAgain();
                       //  return computerChoice + " wins! " + roundScore;
-                      
+                      break;
                       
             
                     case "paper":
                         //humanScore = points;
                         //computerScore = points;
-                        winnerScore = ++humanScore && ++computerScore;
+                      //  winnerScore = humanScore + 1 && computerScore + 1;
                         updatedHumanScore = 1;
                         updatedComputerScore = 1;
                         winner = userHuman && userComputer;
                         loser = "No one";
                         
                         
-                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                        winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement + " | " +roundScore);
-                        return playRoundAgain();
+                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                        winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        //  console.log(winnerStatement + " | " +roundScore);
+                      //  playRoundAgain();
                        // return choice2 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
-                       
+                       break;
 
 
                     case "scissors":
                         // computerScore = points;
-                        winnerScore = ++computerScore;
+                      //  winnerScore = computerScore + 1;
                         updatedHumanScore = 0;
                         updatedComputerScore = 1;
                         winner = userComputer;
                         loser = userHuman;
                         
 
-                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                        winnerStatement = userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement + " | " + roundScore);
-                        return playRoundAgain();
+                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        // console.log(winnerStatement + " | " + roundScore);
+                      //  playRoundAgain();
                       // return computerChoice + " wins! " + roundScore;
-                        
+                      break;
 
                         
                         default:
@@ -581,24 +729,26 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                     
                     case "rock":
                         // computerScore = points;
-                        winnerScore = ++computerScore;
+                      //  winnerScore = computerScore + 1;
                         updatedHumanScore = 0;
                         updatedComputerScore = 1;
                         winner = userComputer;
                         loser = userHuman;
                         
                       
-                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                        winnerStatement = userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement + " | " + roundScore);
-                        return playRoundAgain();
+                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+                      
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        //  console.log(winnerStatement + " | " + roundScore);
+                      //  playRoundAgain();
                        // return computerChoice + " wins! " + roundScore;
-                       
+                       break;
 
 
                     case "paper":
                        // humanScore = points;
-                        winnerScore = ++humanScore;
+                      //  winnerScore = humanScore + 1;
 
                         updatedHumanScore = 1;
                         updatedComputerScore = 0;
@@ -606,19 +756,21 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                         loser = userComputer;
                         
 
-                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                        winnerStatement = userHuman + " - Score:" + humanScore + " won!";
-                        console.log(winnerStatement + " | " + roundScore);
-                        return playRoundAgain();
+                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                        winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+                    
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        //  console.log(winnerStatement + " | " + roundScore);
+                       // playRoundAgain();
                       //  return humanChoice + " wins! " + roundScore;
-                      
+                      break;
 
 
                     case "scissors":
                         //humanScore = points;
                         //computerScore = points;
                         
-                        winnerScore = ++humanScore && ++computerScore;                    
+                      //  winnerScore = humanScore + 1 && computerScore + 1;                    
                         
                         updatedHumanScore = 1;
                         updatedComputerScore = 1;
@@ -626,12 +778,14 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                         loser = "No one";
                         
                         
-                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
-                        winnerStatement = "It's a tie! Both " + userHuman + " - Score:" + humanScore + " and " + userComputer + " - Score:" + computerScore + " won!";
-                        console.log(winnerStatement + " | " + roundScore);
-                        return playRoundAgain();
+                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+                        winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+                      
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        // console.log(winnerStatement + " | " + roundScore);
+                      //  playRoundAgain();
                         // return choice3 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
-                        
+                        break;
 
                                             
                         default:
@@ -642,7 +796,11 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
     
 } // main switch endbacket 
 
+//return playRoundAgain();
 
+// I need to return a value
+
+return scoreResult;
 
 } // this is the playRound function endbracket
 
@@ -654,96 +812,33 @@ let computerSelection = computerResult(); // changed getComputerChoice() to comp
 
 //playRound(humanSelection, computerSelection); //commenting out as it didn't do anything
 
+// this is coming back undefined, why?
 
 console.log(playRound(humanSelection, computerSelection)); // this line was printing the winning message for a second time
 
+// moving playRoundAgain
 
 
-// start playRoundAgain function
-
-function playRoundAgain() {
-    //`Round: ${roundX}, Total Score: ${totalScore}`; don't want this printed yet
-    
-    // play 4 more rounds without using loops
-    
-    //pseudo code
-    /*
-    SEQUENCE
-    IF round one has completed
-    THEN play again
-    ELSEIF round two has completed
-    THEN update rounds and scores but do not print
-    THEN play again
-    ELSEIF round 3 has completed
-    THEN update rounds and scores but do not print
-    THEN play again
-    ELSEIF round 4 has completed
-    THEN update rounds and scores but do not print
-    THEN play again
-    ELSEIF round 5 has completed
-    Then update rounds and score but this time also print total score.
-    
-    */
-
-    
-
-    // need to add a wait 10 seconds before playing
-    
-    if (numberOfRounds === 1) { // updatedHumanScore <= 1 && updatedComputerScore <= 1
-        
-       setTimeout(() => {
-            
-        console.log(playRound(humanSelection, computerSelection));
-        increaseRounds(increaseRoundsByOne);
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-
-    }, 10000); // 10 seconds
-    
-    } else if (numberOfRounds === 2) {
-        
-        setTimeout(() => {
-
-        console.log(playRound(humanSelection, computerSelection));
-        increaseRounds(increaseRoundsByOne);
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-    
-    }, 10000); // 10 seconds
-
-    } else if (numberOfRounds === 3) {
-        
-        setTimeout(() => {
-
-        console.log(playRound(humanSelection, computerSelection));
-        increaseRounds(increaseRoundsByOne);
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-
-    }, 10000); // 10 seconds
-
-    } else if (numberOfRounds === 4) {
-        
-        setTimeout(() => {
-
-        increaseRounds(increaseRoundsByOne)
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-        console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
-
-    }, 10000); // 10 seconds
-
-    } else {
-        return;
-    }
-    
-    
-        // return roundX && totalScore;
-    
-} // end of playRoundAgain
 
 
+
+// below if statement for playGame
+
+if (updatedHumanScore <= 5 && updatedComputerScore <= 5 && numberOfRounds === 5) {
+
+    return "Game Over";
+}
 
 } // end of playGame
 
 
 playGame();
+
+
+
+
+
+
 
 // I changed the return from winnerStatement in the switch statements 
 // to the result + "wins" and now it displays the result.
