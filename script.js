@@ -155,11 +155,17 @@ function increaseRounds(increaseRoundsByOne) {
         
      }
 
-    // let roundX = increaseRounds; 
+     let roundNumber = increaseRounds;
+    // roundX is going to play playRound aka playGame
+// not sure if needed
+/*
+function roundX() {
 
+  return  playGame();
 
+}
 
-
+*/
 
 // processes the total score
 
@@ -231,7 +237,7 @@ function processScoreResult(updatedHumanScore, updatedComputerScore) {
 
 // total score needs a varaible to go into // unfortunatly it didn't work
 
-// let totalScore = processScoreResult;
+ let totalScores = processScoreResult;
 
 
 
@@ -242,132 +248,7 @@ function processScoreResult(updatedHumanScore, updatedComputerScore) {
 
 // added playRoundAgain;
 
-// start playRoundAgain function
 
-function playRoundAgain() {
-    //`Round: ${roundX}, Total Score: ${totalScore}`; don't want this printed yet
-    
-    // play 4 more rounds without using loops
-    
-    //pseudo code
-    /*
-    SEQUENCE
-    IF round one has completed
-    THEN play again
-    ELSEIF round two has completed
-    THEN update rounds and scores but do not print
-    THEN play again
-    ELSEIF round 3 has completed
-    THEN update rounds and scores but do not print
-    THEN play again
-    ELSEIF round 4 has completed
-    THEN update rounds and scores but do not print
-    THEN play again
-    ELSEIF round 5 has completed
-    Then update rounds and score but this time also print total score.
-    
-    */
-
-    
-
-    // need to add a wait 10 seconds before playing
-    
-    if (updatedHumanScore <= 1 && updatedComputerScore <= 1 && numberOfRounds === 1) { 
-        
-        function refreshPlay() {
-
-       
-      const wait10Seconds =  setTimeout(() => {
-          
-        console.log(playRound(humanSelection, computerSelection));
-        increaseRounds(increaseRoundsByOne);
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-    
-
-
-    }, 10000); // 10 seconds
-
-  clearTimeout(wait10Seconds);
-  // need to return some value
-  return wait10Seconds;
-
-}
-  //return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
- // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
-   // return wait10Seconds;
-
-
-    } else if (updatedHumanScore <= 2 && updatedComputerScore <= 2 && numberOfRounds === 2) {
-        
-        refreshPlay();
-/*
-        const wait10Seconds = setTimeout(() => {
-
-        console.log(playRound(humanSelection, computerSelection));
-        increaseRounds(increaseRoundsByOne);
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-    
-    }, 10000); // 10 seconds
-    clearTimeout(wait10Seconds); */
-   // return wait10Seconds;
-    //return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
-   // return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
-
-
-    } else if (updatedHumanScore <= 3 && updatedComputerScore <= 3 && numberOfRounds === 3) {
-        
-        refreshPlay();
-
-        /*
-        const wait10Seconds = setTimeout(() => {
-
-        console.log(playRound(humanSelection, computerSelection));
-        increaseRounds(increaseRoundsByOne);
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-
-    }, 10000); // 10 seconds
-    clearTimeout(wait10Seconds);
- */
-
-   // return wait10Seconds;
-   //return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
-   // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
-
-    } else if (updatedHumanScore <= 4 && updatedComputerScore <= 4 && numberOfRounds === 4) {
-        
-        refreshPlay();
-        return console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
-
-    //    function endPlay() {
-/*
-        const wait10Seconds = setTimeout(() => {
-
-        increaseRounds(increaseRoundsByOne)
-        processScoreResult(updatedHumanScore, updatedComputerScore);
-        console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
-
-    }, 10000); // 10 seconds
-   return clearTimeout(wait10Seconds);
-*/
-//} // function end play endbrackets
-
-// endPlay();
-   // return wait10Seconds;
-   // return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
-  // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
-
-    } else {
-        return;
-    }
-    
-    return refreshPlay();
-        // must return something to keep it defined and not undefined.
-
-        // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)]
-
-
-    
-} // end of playRoundAgain
 
 
 // Now write the logic to get the human choice
@@ -529,6 +410,150 @@ function playGame() {
     
     let computerResult = getComputerChoice;
     
+
+
+// start playRoundAgain function
+
+function playRoundAgain(roundX, roundNumber, totalScores) {
+    
+    roundX = playRound;
+    roundNumber = increaseRounds;
+    totalScores = processScoreResult;
+
+    //`Round: ${roundX}, Total Score: ${totalScore}`; don't want this printed yet
+    
+    // play 4 more rounds without using loops
+    
+    //pseudo code
+    /*
+    SEQUENCE
+    IF round one has completed
+    THEN play again
+    ELSEIF round two has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 3 has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 4 has completed
+    THEN update rounds and scores but do not print
+    THEN play again
+    ELSEIF round 5 has completed
+    Then update rounds and score but this time also print total score.
+    
+    */
+
+    
+
+    // need to add a wait 10 seconds before playing
+    
+    if (updatedHumanScore <= 1 && updatedComputerScore <= 1) { //numberOfRounds === 1
+        
+        function refreshPlay() {
+
+       
+      const wait10Seconds =  setTimeout(() => {
+          // i can't call playRound directly from before playGame. 
+        
+        console.log(roundX(humanSelection, computerSelection));
+        roundNumber(increaseRoundsByOne);
+        totalScores(updatedHumanScore, updatedComputerScore);
+        // increaseRounds(increaseRoundsByOne);
+        // processScoreResult(updatedHumanScore, updatedComputerScore);
+        
+
+
+    }, 10000); // 10 seconds
+
+  clearTimeout(wait10Seconds);
+  // need to return some value
+  return wait10Seconds;
+
+}
+  //return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+ // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
+   // return wait10Seconds;
+
+
+    } else if (updatedHumanScore <= 2 && updatedComputerScore <= 2) { // numberOfRounds === 2
+        
+        refreshPlay();
+/*
+        const wait10Seconds = setTimeout(() => {
+
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+    
+    }, 10000); // 10 seconds
+    clearTimeout(wait10Seconds); */
+   // return wait10Seconds;
+    //return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
+   // return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+
+
+    } else if (updatedHumanScore <= 3 && updatedComputerScore <= 3) { // numberOfRounds === 3
+        
+        refreshPlay();
+
+        /*
+        const wait10Seconds = setTimeout(() => {
+
+        console.log(playRound(humanSelection, computerSelection));
+        increaseRounds(increaseRoundsByOne);
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+
+    }, 10000); // 10 seconds
+    clearTimeout(wait10Seconds);
+ */
+
+   // return wait10Seconds;
+   //return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+   // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
+
+    } else if (updatedHumanScore <= 4 && updatedComputerScore <= 4) {  // numberOfRounds === 4
+        
+        refreshPlay();
+        return console.log(totalScores(updatedHumanScore, updatedComputerScore));
+
+    //    function endPlay() {
+/*
+        const wait10Seconds = setTimeout(() => {
+
+        increaseRounds(increaseRoundsByOne)
+        processScoreResult(updatedHumanScore, updatedComputerScore);
+        console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
+
+    }, 10000); // 10 seconds
+   return clearTimeout(wait10Seconds);
+*/
+//} // function end play endbrackets
+
+// endPlay();
+   // return wait10Seconds;
+   // return [humanSelection, computerSelection, increaseRoundsByOne, updatedHumanScore, updatedComputerScore];
+  // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)];
+
+    } else {
+        return;
+    }
+    
+    return [roundX, roundNumber, totalScores];
+    // return refreshPlay();
+        // must return something to keep it defined and not undefined.
+
+        // return [playRound(humanSelection, computerSelection), increaseRounds(increaseRoundsByOne), processScoreResult(updatedHumanScore, updatedComputerScore)]
+
+
+    
+} // end of playRoundAgain
+
+let finshedRound = roundX();
+let updatedRoundNumber = roundNumber();
+let finalScore = totalScores();
+
+console.log(playRoundAgain(finshedRound, updatedRoundNumber, finalScore));
+
 
 function playRound(humanChoice, computerChoice) { // the parameters are the choices
 
@@ -818,7 +843,7 @@ console.log(playRound(humanSelection, computerSelection)); // this line was prin
 
 // moving playRoundAgain
 
-
+let roundX = playRound;
 
 
 
