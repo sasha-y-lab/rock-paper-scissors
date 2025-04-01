@@ -56,8 +56,8 @@ SET choice1 as "rock", choice2 as "paper", choice3 as "scissors";
     
 // const userComputer = "The Computer";
 
-let humanScore = 0;
-let computerScore = 0;
+//let humanScore = 0;
+//let computerScore = 0;
 const userHuman = "Human";
     
    const userComputer = "The Computer";
@@ -70,16 +70,17 @@ const userHuman = "Human";
  let increaseRoundsByOne; // = ++numberOfRounds;
 //let winnerScore;
 
-let winner;
-let loser;
+// let winner;
+// let loser;
 
 let updatedHumanScore;
 let updatedComputerScore;
 
-let roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-let winnerStatement;
+//let roundScore //= userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+//let winnerStatement;
+let finalScore;
+//let scoreResult;
 
-let scoreResult = winnerStatement + " | " + roundScore;
 
 
 /* might be redundant
@@ -139,26 +140,31 @@ function wait10Seconds(x) {
 
 
 
-function increaseRounds(increaseRoundsByOne) {
+function increaseRounds() { //increaseRoundsByOne
    // `increaseRoundsByOne: ${increaseRoundsByOne}`;
     // show how to increase rounds
     
     if (numberOfRounds === 1) {
-      increaseRoundsByOne = ++numberOfRounds;
+      increaseRoundsByOne = numberOfRounds + 1;
+      return increaseRoundsByOne;
     
     } else if (numberOfRounds === 2) {
         increaseRoundsByOne = numberOfRounds + 1;
+        return increaseRoundsByOne;
     } else if (numberOfRounds === 3) {
         increaseRoundsByOne = numberOfRounds + 1;
+        return increaseRoundsByOne;
     } else if (numberOfRounds === 4) {
         increaseRoundsByOne = numberOfRounds + 1;
+        return increaseRoundsByOne;
     } else if (numberOfRounds === 5) {
         increaseRoundsByOne = numberOfRounds + 1;
+        return increaseRoundsByOne;
     } else {
         return;
     }
    
-   return increaseRoundsByOne;
+   //return increaseRoundsByOne;
         
      }
 
@@ -174,133 +180,6 @@ function roundX() {
 
 */
 
-// processes the total score
-
-function processScoreResult(updatedHumanScore, updatedComputerScore) {
-   // console.log(`Updated Human Score: ${updatedHumanScore}, Updated Computer Score: ${updatedComputerScore}`);
-    
-   
-
-
-    if (numberOfRounds === 2) {
-        
-        if (winner === userHuman && winner === userComputer) {
-            updatedHumanScore = ++humanScore;
-            updatedComputerScore = ++computerScore;
-         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-         
-          console.log(scoreResult);
-          return [updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult];
-        }
-
-        else if (winner === userHuman) {
-
-            updatedHumanScore = ++humanScore;
-          //  winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-          winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-          console.log(scoreResult);
-
-
-        } else if (winner === userComputer) {
-            updatedComputerScore = ++computerScore;
-            winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-            console.log(scoreResult);
-
-        } else {
-            return;
-        }
-        
-       // console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
-    } else if (numberOfRounds === 3) {
-
-        if (winner === userHuman && winner === userComputer) {
-            updatedHumanScore = ++humanScore;
-            updatedComputerScore = ++computerScore;
-         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-         
-          console.log(scoreResult);
-        }
-        
-        else if (winner === userHuman) {
-
-            updatedHumanScore = humanScore + 3;
-            winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-            console.log(scoreResult);
-
-
-        } else if (winner === userComputer) {
-            updatedComputerScore = computerScore + 3;
-            winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-            console.log(scoreResult);
-
-        } else {
-            return;
-        }
-
-    } else if (numberOfRounds === 4) {
-
-        if (winner === userHuman && winner === userComputer) {
-            updatedHumanScore = ++humanScore;
-            updatedComputerScore = ++computerScore;
-         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-         
-          console.log(scoreResult);
-        }
-        
-        else if (winner === userHuman) {
-
-            updatedHumanScore = humanScore + 4;
-            winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-            console.log(scoreResult);
-
-
-        } else if (winner === userComputer) {
-            updatedComputerScore = computerScore + 4;
-            winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-            console.log(scoreResult);
-
-        } else {
-            return;
-        }
- 
-    } else if (numberOfRounds === 5) {
-
-        if (winner === userHuman && winner === userComputer) {
-            updatedHumanScore = ++humanScore;
-            updatedComputerScore = ++computerScore;
-         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-         
-          console.log(scoreResult);
-        }
-        
-        else if (winner === userHuman) {
-
-            updatedHumanScore = humanScore + 5;
-            winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-            console.log(scoreResult);
-
-
-        } else if (winner === userComputer) {
-            updatedComputerScore = computerScore + 5;
-            winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-            console.log(scoreResult);
-
-        } else {
-            return;
-        }
-
-        console.log("Final Score: " + userHuman + ": " + updatedHumanScore + ", " + userComputer + ": " + updatedComputerScore);
-    
-    } else {
-        return;
-    }
-
-    return [updatedHumanScore, updatedComputerScore];
-}
-
-// total score needs a varaible to go into // unfortunatly it didn't work
-
-// let totalScores = processScoreResult;
 
 function startTimer() {
 
@@ -308,18 +187,260 @@ function startTimer() {
 
    }
 
-function refreshPlay() {
+
+// processes the total score
+
+function refreshPlay(humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult) { //processScoreResult(updatedHumanScore, updatedComputerScore)
+   // console.log(`Updated Human Score: ${updatedHumanScore}, Updated Computer Score: ${updatedComputerScore}`);
+   
+   updatedHumanScore = humanScore;
+   updatedComputerScore = computerScore;
+
+   roundScore = userHuman + ": " +  updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
+   
+
+   if (numberOfRounds === 1) {
+    
+    if (winner === userHuman && winner === userComputer) {
+        
+        updatedHumanScore += 1; // humanScore to result
+        updatedComputerScore += 1; // computerScore
+    // winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+         increaseRounds();
+     // console.log(scoreResult);
+      return { updatedHumanScore, updatedComputerScore }; //winnerStatement, scoreResult
+    }
+
+    
+
+    else if (winner === userHuman) {
+
+        updatedHumanScore += 1;
+        updatedComputerScore += 0;
+      //  winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+     // winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+     // console.log(scoreResult);
+     increaseRounds();
+      return { updatedHumanScore, updatedComputerScore };
+
+    } else if (winner === userComputer) {
+        updatedHumanScore += 0;
+        updatedComputerScore += 1;
+        increaseRounds();
+        //winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+       // console.log(scoreResult);
+        return { updatedHumanScore, updatedComputerScore };
+
+    } else {
+        return;
+    }
+    
+
+   }
+
+
+   
+
+     if (numberOfRounds === 2) { // && updatedHumanScore <= 2  && updatedComputerScore <= 2
+        
+        if (winner === userHuman && winner === userComputer) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 1;
+            updatedComputerScore += 1;
+            increaseRounds();
+         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+         
+        
+         scoreResult = winnerStatement + " | " + roundScore;
+
+          console.log(scoreResult);
+         // return [result, updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult];
+         return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+        }
+
+        else if (winner === userHuman) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 1;
+            updatedComputerScore += 0;
+            increaseRounds();
+          //  winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+          winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+          scoreResult = winnerStatement + " | " + roundScore;
+          console.log(scoreResult);
+          //return [result, updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult];
+          return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+
+        } else if (winner === userComputer) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 0;
+            updatedComputerScore += 1;
+            increaseRounds();
+            winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+            scoreResult = winnerStatement + " | " + roundScore;
+            console.log(scoreResult);
+            //return [result, updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult];
+            return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+
+        } else {
+            return;
+        }
+        
+       // console.log(processScoreResult(updatedHumanScore, updatedComputerScore));
+    } else if (numberOfRounds === 3) { // && updatedHumanScore <= 3  && updatedComputerScore <= 3
+
+        if (winner === userHuman && winner === userComputer) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 1;
+            updatedComputerScore += 1;
+            increaseRounds();
+         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+         scoreResult = winnerStatement + " | " + roundScore;
+          console.log(scoreResult);
+          return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+        }
+        
+        else if (winner === userHuman) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 1;
+            updatedComputerScore += 0;
+            increaseRounds();
+            winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+            scoreResult = winnerStatement + " | " + roundScore;
+            console.log(scoreResult);
+            return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+
+        } else if (winner === userComputer) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 0;
+            updatedComputerScore += 1;
+            increaseRounds(increaseRoundsByOne);
+           winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+            console.log(scoreResult);
+            return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+
+        } else {
+            return;
+        }
+
+    } else if (numberOfRounds === 4) { //&& updatedHumanScore <= 4  && updatedComputerScore <= 4
+
+        if (winner === userHuman && winner === userComputer) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 1;
+            updatedComputerScore += 1;
+            increaseRounds(increaseRoundsByOne);
+         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+         scoreResult = winnerStatement + " | " + roundScore;
+          console.log(scoreResult);
+          return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+        }
+        
+        else if (winner === userHuman) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 1;
+            updatedComputerScore += 0;
+            increaseRounds(increaseRoundsByOne);
+            winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+            scoreResult = winnerStatement + " | " + roundScore;
+            console.log(scoreResult);
+            return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+
+        } else if (winner === userComputer) {
+            startTimer();
+            getHumanChoice();
+            getComputerChoice();
+            updatedHumanScore += 0;
+            updatedComputerScore += 1;
+            winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+            scoreResult = winnerStatement + " | " + roundScore;
+            console.log(scoreResult);
+            return { updatedHumanScore, updatedComputerScore, winnerStatement, scoreResult };
+
+        } else {
+            return;
+        }
+ 
+    } else if (numberOfRounds === 5) { //&& updatedHumanScore <= 5  && updatedComputerScore <= 5
+
+        if (updatedHumanScore === updatedComputerScore) { //winner === userHuman && winner === userComputer
+           // updatedHumanScore = humanScore + 1;
+           // updatedComputerScore = computerScore + 1;
+        // winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+         finalScore = "Winners: " + userHuman + " and " + userComputer + "!";
+          //console.log(scoreResult);
+          return finalScore;
+        }
+        
+        else if (updatedHumanScore > updatedComputerScore) { //winner === userHuman
+
+          //  updatedHumanScore = humanScore + 1;
+           // updatedComputerScore;
+           // winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+            finalScore = "Winner: " + userHuman + "!";
+           // console.log(scoreResult);
+            return finalScore;
+
+        } else if (updatedHumanScore < updatedComputerScore) { //winner === userComputer
+            //updatedHumanScore;
+           // updatedComputerScore = computerScore + 1;
+           // winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+            finalScore = "Winner: " + userComputer + "!";
+           // console.log(scoreResult);
+            return finalScore;
+
+        } else {
+            return;
+        }
+
+    
+    } else {
+        return;
+    }
+
+
+}
+
+// total score needs a varaible to go into // unfortunatly it didn't work
+
+// let totalScores = processScoreResult;
+
+
+// transfer results from playRound to refreshPlay
+
+//let finalResult = playGame();
+refreshPlay(playGame());
+
+
+// function refreshPlay() {
 
     // let roundX;
-    let roundNumber;
-    let totalScores;
-    let finalScore;
+
+    
+   // let roundNumber;
+   // let totalScores;
+    
          
 
-    if (numberOfRounds === 1) {
-        startTimer();
+  //  if (numberOfRounds === 1) {
+   //     startTimer();
         //roundX = console.log(playRound(humanSelection, computerSelection));
-        
+   /*     
         roundNumber = increaseRounds(increaseRoundsByOne); 
         totalScores = processScoreResult(updatedHumanScore, updatedComputerScore); 
 
@@ -328,31 +449,31 @@ function refreshPlay() {
     else if (numberOfRounds >= 2 && numberOfRounds < 5) {
         startTimer();
         getHumanChoice();
-        getComputerChoice();
+        getComputerChoice(); */
         //playGame();
-        roundNumber = increaseRounds(increaseRoundsByOne); 
-        totalScores = processScoreResult(updatedHumanScore, updatedComputerScore); 
+     //   roundNumber = increaseRounds(increaseRoundsByOne); 
+     //   totalScores = processScoreResult(updatedHumanScore, updatedComputerScore); 
         //console.log(totalScores);
         // increaseRounds(increaseRoundsByOne);
         // processScoreResult(updatedHumanScore, updatedComputerScore);
         
-        return [roundNumber, totalScores]; //roundX
+     //   return [roundNumber, totalScores]; //roundX
 
-        } else if (numberOfRounds === 5 ) {
+     //   } else if (numberOfRounds === 5 ) {
         // roundX = console.log(playRound(humanSelection, computerSelection));
-        startTimer();
+     //   startTimer();
         
-        roundNumber = increaseRounds(increaseRoundsByOne); 
-        totalScores = processScoreResult(updatedHumanScore, updatedComputerScore);
-        finalScore = `Final Score: ${userHuman}: ${updatedHumanScore} | ${userComputer}: ${updatedComputerScore}`;
-        console.log(finalScore);
-        return [roundNumber, totalScores, finalScore];
+    //    roundNumber = increaseRounds(increaseRoundsByOne); 
+   //     totalScores = processScoreResult(updatedHumanScore, updatedComputerScore);
+        //finalScore = `Final Score: ${userHuman}: ${updatedHumanScore} | ${userComputer}: ${updatedComputerScore}`;
+ /*       console.log(finalScore);
+        return [roundNumber, totalScores];
 
         } else {
             return;
         }
-
-} // end of refresh play brackets
+*/
+//} // end of refresh play brackets
 
 
 
@@ -625,8 +746,13 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                 // both get 1 point plus an increment. Print the winner with score. but then check all answers
 
 
-
-
+                let humanScore = 0;
+                let computerScore = 0;
+                let winner;
+                let loser;
+                let roundScore;
+                let winnerStatement;
+                let scoreResult;
 
         switch (humanChoice) { // humanChoiceMap getHumanChoice -  humanChoice to humanChoiceMap - changing humanChoice to getHumanChoice gave undefined log
 
@@ -653,64 +779,68 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                 
                 
                 case "rock":
-                    //humanScore = points;
-                    //computerScore = points;
+                    humanScore = 1;
+                    computerScore = 1;
                    // winnerScore = (humanScore + 1) && (computerScore + 1);
-                    updatedHumanScore = 1;
-                    updatedComputerScore = 1;
+                    //updatedHumanScore = humanScore + 1;
+                   // updatedComputerScore = computerScore + 1;
                     winner = userHuman && userComputer;
                     loser = "No one";
-                    
+                   //increaseRounds();// processScoreResult(updatedHumanScore, updatedComputerScore);
 
-                   // roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                   winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-                   // scoreResult = winnerStatement + " | " + roundScore;  
+                   roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                   winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + humanScore + " and " + userComputer + " - Score: " + computerScore + " won!";
+                   scoreResult = winnerStatement + " | " + roundScore;  
                     
-                    //  console.log(winnerStatement + " | " + roundScore);
+                    console.log(scoreResult); //winnerStatement + " | " + roundScore
                     //   playRoundAgain();
-                     //  break;
+                      // break;
                       //  return choice1 + " wins! " + roundScore; // took out humanChoice + " " + computerChoice
-                      return scoreResult;
-
+                      return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
+                    // return [humanScore, computerScore, winnerStatement, scoreResult];
                         
             
                 case "paper":
-                   // humanScore = points;
+                    humanScore = 1;
+                   // computerScore;
                   // winnerScore = humanScore + 1;
-                   updatedHumanScore = 1;
-                   updatedComputerScore = 0;
+                  // updatedHumanScore = 1;
+                  // updatedComputerScore = 0;
                    winner = userHuman;
                    loser = userComputer;
-                   
+                  // increaseRounds(); // processScoreResult(updatedHumanScore, updatedComputerScore);
 
-                  //  roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                    winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-                   // scoreResult = winnerStatement + " | " + roundScore;  
-                  //  console.log(winnerStatement + " | " + roundScore);
+                   roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                    winnerStatement = userHuman + " - Score: " + humanScore + " won!";
+                    scoreResult = winnerStatement + " | " + roundScore;  
+                    console.log(scoreResult);
                   //  playRoundAgain();
                     //    return humanChoice + " wins! " + roundScore;
                    // break;
-                   return scoreResult;
+                  return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
+                 // return [humanScore, computerScore, winnerStatement, scoreResult];
 
 
                 case "scissors":
-                   // humanScore = points;
+                   humanScore = 1;
+                  // computerScore;
                   // winnerScore = humanScore + 1;
-                   updatedHumanScore = 1;
-                   updatedComputerScore = 0;
+                  // updatedHumanScore = 1;
+                  // updatedComputerScore = 0;
                     winner = userHuman;
                     loser = userComputer;
-                   
+                   // increaseRounds(); //  processScoreResult(updatedHumanScore, updatedComputerScore);
 
-                   // roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                    winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-                   // scoreResult = winnerStatement + " | " + roundScore;  
-                   // console.log(winnerStatement + " | " + roundScore);
+                   roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                 winnerStatement = userHuman + " - Score: " + humanScore + " won!";
+                   scoreResult = winnerStatement + " | " + roundScore;  
+                   console.log(scoreResult); // console.log(winnerStatement + " | " + roundScore);
                    // playRoundAgain();
                   //  return humanChoice + " wins! " + roundScore;
                   //break;
-                  return scoreResult;
-                    
+                  return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
+                 // return [humanScore, computerScore, winnerStatement, scoreResult];
+
 
                         default:
                             return;
@@ -722,63 +852,68 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
 
                 switch (computerChoice) {
                     case "rock":
-                        // computerScore = points;
+                         computerScore = 1;
+                         //humanScore;
                         // winnerScore = computerScore + 1;
 
-                         updatedHumanScore = 0;
-                    updatedComputerScore = 1;
+                        // updatedHumanScore = 0;
+                   // updatedComputerScore = 1;
                     winner = userComputer;
                     loser = userHuman;
-                    
+                  //  increaseRounds();  // processScoreResult(updatedHumanScore, updatedComputerScore);
 
-                    //    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-                     //   scoreResult = winnerStatement + " | " + roundScore;  
-                      //  console.log(winnerStatement + " | " + roundScore);
+                       roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                      winnerStatement = userComputer + " - Score: " + computerScore + " won!";
+                       scoreResult = winnerStatement + " | " + roundScore;  
+                       console.log(scoreResult); //  console.log(winnerStatement + " | " + roundScore);
                       //  playRoundAgain();
                       //  return computerChoice + " wins! " + roundScore;
-                     // break;
-                     return scoreResult;
+                    //  break;
+                    return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
+                   // return [humanScore, computerScore, winnerStatement, scoreResult];
                       
             
                     case "paper":
-                        //humanScore = points;
-                        //computerScore = points;
+                        humanScore = 1;
+                        computerScore = 1;
                       //  winnerScore = humanScore + 1 && computerScore + 1;
-                        updatedHumanScore = 1;
-                        updatedComputerScore = 1;
+                        //updatedHumanScore = 1;
+                        //updatedComputerScore = 1;
                         winner = userHuman && userComputer;
                         loser = "No one";
+                       // increaseRounds(increaseRoundsByOne);  //  processScoreResult(updatedHumanScore, updatedComputerScore);
                         
-                        
-                    //    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                       winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-                     //   scoreResult = winnerStatement + " | " + roundScore;  
-                        //  console.log(winnerStatement + " | " +roundScore);
+                       roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                       winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + humanScore + " and " + userComputer + " - Score: " + computerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        console.log(scoreResult);   //  console.log(winnerStatement + " | " +roundScore);
                       //  playRoundAgain();
                        // return choice2 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
                       // break;
-                      return scoreResult;
+                      return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
+                     // return [humanScore, computerScore, winnerStatement, scoreResult];
 
 
                     case "scissors":
-                        // computerScore = points;
+                        computerScore = 1;
+                        //humanScore;
                       //  winnerScore = computerScore + 1;
-                        updatedHumanScore = 0;
-                        updatedComputerScore = 1;
+                       // updatedHumanScore = 0;
+                       // updatedComputerScore = 1;
                         winner = userComputer;
                         loser = userHuman;
-                        
+                       // increaseRounds(increaseRoundsByOne);  //  processScoreResult(updatedHumanScore, updatedComputerScore);
 
-                     //   roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-                      //  scoreResult = winnerStatement + " | " + roundScore;  
-                        // console.log(winnerStatement + " | " + roundScore);
+                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                       winnerStatement = userComputer + " - Score: " + computerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        console.log(scoreResult); // console.log(winnerStatement + " | " + roundScore);
                       //  playRoundAgain();
                       // return computerChoice + " wins! " + roundScore;
-                      // break;
-                      return scoreResult;
-
+                     //  break;
+                      //return scoreResult;
+                     // return [humanScore, computerScore, winnerStatement, scoreResult];
+                     return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
                         
                         default:
                             return;
@@ -789,67 +924,72 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
                 switch (computerChoice) {
                     
                     case "rock":
-                        // computerScore = points;
+                         computerScore = 1;
+                       //  humanScore;
                       //  winnerScore = computerScore + 1;
-                        updatedHumanScore = 0;
-                        updatedComputerScore = 1;
+                       // updatedHumanScore = 0;
+                       // updatedComputerScore = 1;
                         winner = userComputer;
                         loser = userHuman;
-                        
+                        //increaseRounds(increaseRoundsByOne);  // processScoreResult(updatedHumanScore, updatedComputerScore);
                       
-                      //  roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+                       roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                       winnerStatement = userComputer + " - Score: " + computerScore + " won!";
                       
-                       // scoreResult = winnerStatement + " | " + roundScore;  
-                        //  console.log(winnerStatement + " | " + roundScore);
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        console.log(scoreResult); //console.log(winnerStatement + " | " + roundScore);
                       //  playRoundAgain();
                        // return computerChoice + " wins! " + roundScore;
                       // break;
-                      return scoreResult;
+                      return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
+                     // return [humanScore, computerScore, winnerStatement, scoreResult];
 
 
                     case "paper":
-                       // humanScore = points;
+                       humanScore = 1;
+                      // computerScore;
                       //  winnerScore = humanScore + 1;
 
-                        updatedHumanScore = 1;
-                        updatedComputerScore = 0;
+                       // updatedHumanScore = 1;
+                       // updatedComputerScore = 0;
                         winner = userHuman;
                         loser = userComputer;
-                        
+                        //increaseRounds(increaseRoundsByOne);   // processScoreResult(updatedHumanScore, updatedComputerScore);
 
-                       // roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+                        roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                       winnerStatement = userHuman + " - Score: " + humanScore + " won!";
                     
-                       // scoreResult = winnerStatement + " | " + roundScore;  
-                        //  console.log(winnerStatement + " | " + roundScore);
+                        scoreResult = winnerStatement + " | " + roundScore;  
+                        console.log(scoreResult); //  console.log(winnerStatement + " | " + roundScore);
                        // playRoundAgain();
                       //  return humanChoice + " wins! " + roundScore;
-                    //  break;
-                    return scoreResult;
+                    // break;
+                    return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
+                   //return [humanScore, computerScore, winnerStatement, scoreResult];
 
 
                     case "scissors":
-                        //humanScore = points;
-                        //computerScore = points;
+                        humanScore = 1;
+                        computerScore = 1;
                         
                       //  winnerScore = humanScore + 1 && computerScore + 1;                    
                         
-                        updatedHumanScore = 1;
-                        updatedComputerScore = 1;
+                       // updatedHumanScore = 1;
+                       // updatedComputerScore = 1;
                         winner = userHuman && userComputer;
                         loser = "No one";
+                       // increaseRounds(increaseRoundsByOne); // processScoreResult(updatedHumanScore, updatedComputerScore);
                         
-                        
-                      //  roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+                       roundScore = userHuman + ": " + humanScore + " | " + userComputer + ": " + computerScore;
+                     winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + humanScore + " and " + userComputer + " - Score: " + computerScore + " won!";
                       
-                       // scoreResult = winnerStatement + " | " + roundScore;  
-                        // console.log(winnerStatement + " | " + roundScore);
+                       scoreResult = winnerStatement + " | " + roundScore;  
+                       console.log(scoreResult); // console.log(winnerStatement + " | " + roundScore);
                       //  playRoundAgain();
                         // return choice3 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
-                      //  break;
-                      return scoreResult;
+                       // break;
+                     // return [humanScore, computerScore, winnerStatement, scoreResult];
+                     return { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult };
 
                                             
                         default:
@@ -865,11 +1005,15 @@ return winnerScore && updatedHumanScore && updatedComputerScore;
 // I need to return a value
 //getHumanChoice();
 //getComputerChoice();
-return [humanChoice, computerChoice];
+//return playRound();
 
 
 
 } // this is the playRound function endbracket
+
+
+
+
 let humanResult = getHumanChoice;
 let computerResult = getComputerChoice;
 
@@ -884,7 +1028,12 @@ let computerSelection = computerResult(); // changed getComputerChoice() to comp
 
 // this is coming back undefined, why?
 
-console.log(playRound(humanSelection, computerSelection)); // choiceSelections - this line was printing the winning message for a second time
+//console.log(playRound(humanSelection, computerSelection)); // choiceSelections - this line was printing the winning message for a second time
+
+//call playRound and store it's returned values
+let { humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult } = playRound(humanSelection, computerSelection);
+//pass values to refreshPlay and return final result
+return refreshPlay(humanScore, computerScore, winner, winnerStatement, roundScore, scoreResult);
 
 // moving playRoundAgain
 //let roundX = playRound;
@@ -1145,15 +1294,22 @@ let finalScore = totalScores();
 
 // below if statement for playGame
 
+/*
 if (updatedHumanScore <= 5 && updatedComputerScore <= 5 && numberOfRounds === 5) {
 
     return "Game Over";
 }
+*/
 
 } // end of playGame
 
 
-playGame();
+//playGame();
+
+// call playGame and store final result.
+let finalResults = playGame();
+console.log(finalResults);
+
 
 
 
