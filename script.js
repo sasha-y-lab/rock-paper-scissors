@@ -16,16 +16,16 @@ let computerScore = 0;
 
 
 
-
+/*
 
 function startTimer() {
 
-   return setTimeout(playGame, 5000);
+ setTimeout(playGame, 3000);
 
    } 
 
-
-
+   //startTimer();
+*/
 
 
    // start getHumanChoice
@@ -136,29 +136,31 @@ function getComputerChoice(choice1, choice2, choice3) { //  computerChoiceMap
 
 // below code taken from assignment step 5 example
 
-const humanSelection = getHumanChoice(); // changed getHumanChoice() to humanResult() & const to let
-const computerSelection = getComputerChoice(); // changed getComputerChoice() to computerResult() & const to let 
+//const humanSelection = getHumanChoice; // changed getHumanChoice() to humanResult() & const to let
+//const computerSelection = getComputerChoice; // changed getComputerChoice() to computerResult() & const to let 
 //let choiceSelections = choiceResults();
 //playRound(humanSelection, computerSelection); //commenting out as it didn't do anything
 
-// this is coming back undefined, why?
+/*
+console.log(playGame()); // took out humanSelection, computerSelection - this plays the first prompt correctly.
+//startTimer(); 
 
-playRound(humanSelection, computerSelection); //  this plays the first prompt correctly.
-startTimer(); 
+console.log(playGame());
+//startTimer(); 
 
-playRound(humanSelection, computerSelection);
-startTimer(); 
-playRound(humanSelection, computerSelection);
-startTimer(); 
-playRound(humanSelection, computerSelection);
-startTimer(); 
-playRound(humanSelection, computerSelection);
+console.log(playGame());
+//startTimer(); 
 
+console.log(playGame());
+//startTimer();
 
+console.log(playGame());
+//clearTimeout();
+*/
 
 function playGame() {
 
-    startTimer(); 
+    
     
     
    
@@ -169,8 +171,8 @@ function playGame() {
 
 function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputerChoice - humanChoiceMap, computerChoiceMap - humanChoice, computerChoice - the parameters are the choices
     
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();  
+ computerChoice = getComputerChoice();
+ humanChoice = getHumanChoice();  
       
 
 let roundScore;
@@ -198,8 +200,7 @@ let choice3 = "scissors";
                 
                 
                 case "rock":
-                    humanScore += 1;
-                    computerScore += 1;
+                    
                    // winnerScore = (humanScore + 1) && (computerScore + 1);
 
                    
@@ -211,14 +212,18 @@ let choice3 = "scissors";
 
                     roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                     winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-                   console.log(scoreResult); 
+                    scoreResult = winnerStatement + " | " + roundScore;
+                    console.log(scoreResult); 
                     
-                 return choice1 + " wins! " + roundScore;
+                  console.log(choice1 + " wins! " + roundScore);
+                  humanScore += 1;
+                   computerScore += 1;
+                  break;
 
                         
             
                 case "paper":
-                    humanScore += 1;
+                    
                    // computerScore = 0;
                    // humanScore = points;
                   // winnerScore = humanScore + 1;
@@ -230,15 +235,18 @@ let choice3 = "scissors";
 
                     roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                     winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+                    scoreResult = winnerStatement + " | " + roundScore;
+                    
                     console.log(scoreResult); 
-                    return humanChoice + " wins! " + roundScore;
-
+                    console.log(humanChoice + " wins! " + roundScore);
+                    humanScore += 1;
+                    break;
 
 
                 case "scissors":
                    // humanScore = points;
                   // winnerScore = humanScore + 1;
-                  humanScore += 1;
+                  ;
                  // computerScore = 0;
                   console.log(updatedHumanScore = humanScore);
                    //updatedComputerScore = 0;
@@ -248,11 +256,14 @@ let choice3 = "scissors";
 
                     roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                     winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
+                    scoreResult = winnerStatement + " | " + roundScore;
                     console.log(scoreResult);  
-                   return humanChoice + " wins! " + roundScore;
+                   console.log(humanChoice + " wins! " + roundScore);
+                   humanScore += 1
+                   break;
 
                         default:
-                            return;
+                            break;
             
                     } 
                     
@@ -268,7 +279,7 @@ let choice3 = "scissors";
 
                         // updatedHumanScore = 0;
                        // humanScore = 0;
-                        computerScore += 1;
+                        
                         console.log(updatedComputerScore = computerScore);
                   //let  winner = userComputer;
                     
@@ -276,17 +287,17 @@ let choice3 = "scissors";
 
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;
                         console.log(scoreResult); 
-                      
-                    return computerChoice + " wins! " + roundScore;
-                      
+                        computerScore += 1;
+                    console.log(computerChoice + " wins! " + roundScore);
+                      break;
             
                     case "paper":
                         //humanScore = points;
                         //computerScore = points;
                       //  winnerScore = humanScore + 1 && computerScore + 1;
-                      humanScore += 1;
-                      computerScore += 1;
+                      
                       console.log(updatedHumanScore = humanScore);
                       console.log(updatedComputerScore += computerScore);
                        //let winner = userHuman || userComputer;
@@ -295,9 +306,12 @@ let choice3 = "scissors";
                         
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;
                         console.log(scoreResult); 
-                     return choice2 + " wins! " + roundScore;
-
+                        console.log(choice2 + " wins! " + roundScore);
+                        humanScore += 1;
+                        computerScore += 1;
+                        break;
 
 
                     case "scissors":
@@ -305,7 +319,7 @@ let choice3 = "scissors";
                       //  winnerScore = computerScore + 1;
                        // updatedHumanScore = 0;
                        //humanScore = 0;
-                       computerScore +=1;
+                       
                        console.log(updatedComputerScore = computerScore);
                         // let winner = userComputer;
                         
@@ -313,12 +327,14 @@ let choice3 = "scissors";
 
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
+                        scoreResult = winnerStatement + " | " + roundScore;
                         console.log(scoreResult); 
-                       return computerChoice + " wins! " + roundScore;
-
+                        console.log(computerChoice + " wins! " + roundScore);
+                        computerScore += 1;
+                        break;
                         
                         default:
-                            return;
+                            break;
         } 
 
             case "scissors":
@@ -330,7 +346,7 @@ let choice3 = "scissors";
                       //  winnerScore = computerScore + 1;
                        // updatedHumanScore = 0;
                        //humanScore = 0;
-                       computerScore += 1;
+                       
                        console.log(updatedComputerScore = computerScore);
                        // winner = userComputer;
                        
@@ -338,15 +354,17 @@ let choice3 = "scissors";
                       
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-                      
+                        scoreResult = winnerStatement + " | " + roundScore;
                         console.log(scoreResult); 
-                       return computerChoice + " wins! " + roundScore;
+                        console.log(computerChoice + " wins! " + roundScore);
+                        computerScore += 1;
+                        break;
 
 
                     case "paper":
                        // humanScore = points;
                       //  winnerScore = humanScore + 1;
-                      humanScore += 1;
+                      
                       //computerScore = 0;
                       console.log(updatedHumanScore = humanScore);
                        // updatedComputerScore = 0;
@@ -356,18 +374,18 @@ let choice3 = "scissors";
 
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-                    
+                        scoreResult = winnerStatement + " | " + roundScore;
                         console.log(scoreResult);  
-                     return humanChoice + " wins! " + roundScore;
-
+                        console.log(humanChoice + " wins! " + roundScore);
+                        humanScore += 1;
+                        break;
 
                     case "scissors":
                         //humanScore = points;
                         //computerScore = points;
                         
                       //  winnerScore = humanScore + 1 && computerScore + 1;                    
-                      humanScore += 1;
-                      computerScore += 1;
+                      
                       console.log(updatedHumanScore = humanScore);
                       console.log(updatedComputerScore = computerScore);
                        // let winner = userHuman || userComputer;
@@ -376,12 +394,15 @@ let choice3 = "scissors";
                         
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-                      
+                        scoreResult = winnerStatement + " | " + roundScore;
                         console.log(scoreResult);  
-                    return choice3 + " wins! " + roundScore;
-                                            
+                        console.log(choice3 + " wins! " + roundScore);
+                        humanScore += 1;
+                        computerScore += 1;
+                        break;
+                                      
                         default:
-                            return;
+                            break;
 
 }                   
 
@@ -393,8 +414,19 @@ let choice3 = "scissors";
 
 } // this is the playRound function endbracket
 
-playRound(humanChoice, computerChoice);
 
+console.log(playRound()); // humanSelection, computerSelection
+
+/*
+startTimer();
+playRound();
+startTimer();
+playRound();
+startTimer();
+playRound();
+startTimer();
+playRound();
+*/
 } // end of playGame
 
-//playGame(); this doubles prompts
+playGame(); //this doubles prompts
