@@ -1,117 +1,15 @@
-// Your game will be played against the computer. You will write a 
-// function that randomly returns “rock”, “paper” or “scissors”.
 
-
-//Part one: computer choice code
-// step one: Create a new function named getComputerChoice.
-
-
-//step two: Write the code so that getComputerChoice will randomly return one of 
-// the following string values: “rock”, “paper” or “scissors”.
-
-//Hint: Math.random method returns a random number that’s greater than or 
-// equal to 0 and less than 1. Think about how you can use this to conditionally 
-// return one of the multiple choices.
-
-// pseudocode
-
-/* 
-SEQUENCE
-INIT choice1, choice2, choice3 inside of getComputerChoice function;
-SET choice1 as "rock", choice2 as "paper", choice3 as "scissors";
-    SET new variable compChoice to CALCULATE Math.random method times (choice1 minus choice 2 minus choice 3) plus choice3; //this returns a random number between the specified values
-    // the above step only gave me 1 option over and over again. not random. got the right result in another assignment.   
-
-
-    // NO THESE DON'T SOUND RIGHT
-    //    SET new variable and get string of choice1 and convert to number;
-      //  SET new variable and get string of choice2 and convert to number;
-     //   SET new variable and get string of choice3 and convert to number;
-            
-        
-        //these are the next steps
-        GET random number result (compChoice) from Math.random method and convert to the choice name value it is;
-                // to do this: 
-
-                // INIT ISNT IT
-                // INIT 3 new variables with their choice values: rock is equal to 1, paper is equal to 2, scissors is equal to 3;
-                                
-                // restart here
-                IF Math.random spits out the number 1;
-                                THEN the computer's choice is rock;
-                                ELSE IF Math.random spits out the number 2;
-                                THEN the computer's choice is paper;
-                                ELSE Math.random spits out the number 3;
-                                THEN the computer's choice is scissors;
-                                ENDIF
-                                    CALL getComputerChoice RETURNING DISPLAY of a random choice of either rock, paper or scissors.
-
-*/
-
-
-
-//global scope
-
- 
-
-// step one: Create a new function named getHumanChoice
-
-// Write the code so that getHumanChoice will return one of the valid choices depending on what the 
-// user inputs.
-// HINT: Use the prompt method to get the user’s input. consider all inputs as valid responses
-
-// pseudocode
-
-/*
-
-SEQUENCE
-INIT choice1, choice2, choice3 inside of getComputerChoice function;
-SET choice1 as "rock", choice2 as "paper", choice3 as "scissors";
-    SET new variable humanChoice to display text input of human whether, rock, paper or scissors;
-        IF prompt method spits out the string "rock";
-                                THEN the human's choice is rock;
-                                ELSE IF prompt method spits out the string "paper";
-                                THEN the human's choice is paper;
-                                ELSE prompt method spits out the string "scissors";
-                                THEN the human's choice is scissors;
-                                ENDIF
-                                    CALL getHumanChoice RETURNING DISPLAY of a random choice of either rock, paper or scissors.
-
-*/
-
-
-
-
-// Step 4: Declare the players score variables
-
-// Your game will keep track of the players score. You will write variables 
-// to keep track of the players score.
-
-// Create two new variables named humanScore and computerScore in the global scope.
-// Initialize those variables with the value of 0
-
-// Step 5: Write the logic to play a single round
-// Your game will be played round by round. You will write a function that takes the
-// human and computer player choices as arguments, plays a single round, increments 
-// the round winner’s score and logs a winner announcement.
-
-// Create a new function named playRound
-
-// there was something playing the human prompt twice & it was the initial codes at the top.
-
-
-// step 6: Move your playRound function and score variables so that they’re declared
-//  inside of the new playGame function
 
 function startTimer() {
 
-    setTimeout(playGame, 5000);
+    return setTimeout(playGame, 5000);
 
    } 
 
    // start getHumanChoice
 
-function getHumanChoice(choice1, choice2, choice3) { // humanChoiceMap
+
+   function getHumanChoice(choice1, choice2, choice3) { // humanChoiceMap
     choice1 = "rock";
     choice2 = "paper";
     choice3 = "scissors";
@@ -213,13 +111,14 @@ function getComputerChoice(choice1, choice2, choice3) { //  computerChoiceMap
 getComputerChoice();
   
 
+
+
+
 function playGame() {
 
    
-    startTimer(); 
+    
    
-
-
 
 
 
@@ -227,32 +126,29 @@ function playGame() {
 
 function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputerChoice - humanChoiceMap, computerChoiceMap - humanChoice, computerChoice - the parameters are the choices
     
+    computerChoice = getComputerChoice;
+     humanChoice = getHumanChoice;  
+ 
+    
+    //let computerSelection = computerChoice;
+   //let humanSelection = humanChoice;
+    
    
-    
-    
-    
-   
 
-      
 
-               
-
-   // function playerChoices({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore }) {
-      
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();  
 
     
-    let userHuman = "Human"; //const
-    let userComputer = "The Computer"; //const
     
-    let numberOfRounds = 1;
-    let count = numberOfRounds;
+    const userHuman = "Human"; //const
+    const userComputer = "The Computer"; //const
+    
+   // let numberOfRounds = 1;
+  //  let count = numberOfRounds;
 
     
     let humanScore = 0;
     let computerScore = 0;
-   
+  // let winner;
    
    let roundScore;
    let winnerStatement;
@@ -262,7 +158,9 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
    let updatedHumanScore = humanScore;
    let updatedComputerScore = computerScore;
     
-
+   let choice1 = "rock";
+   let choice2 = "paper";
+   let choice3 = "scissors";
 
    
       
@@ -273,20 +171,25 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
 
         switch (humanChoice) { //changing humanChoice to getHumanChoice gave undefined log
 
+
+            
             case "rock":
 
+            
+
             switch (computerChoice) { // changing all computerChoice to getComputerChoice gave undefined log
-                             
+                
+                
                 
                 case "rock":
-                    //humanScore = points;
-                    //computerScore = points;
+                    humanScore += 1;
+                    computerScore += 1;
                    // winnerScore = (humanScore + 1) && (computerScore + 1);
 
                    
-                    updatedHumanScore += 1;
-                    updatedComputerScore += 1;
-                    winner = userHuman || userComputer;
+                   updatedHumanScore = humanScore;
+                    console.log(updatedComputerScore = computerScore);
+                  // let winner = userHuman || userComputer;
                     
                     
 
@@ -294,7 +197,10 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                     winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
                     scoreResult = winnerStatement + " | " + roundScore;  
                     
-                     console.log(scoreResult);
+                     //console.log(scoreResult);
+                    
+        
+          /*
                      if (count <= 5) {
                         count += 1;
                         }
@@ -389,7 +295,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                             return;
                          }
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                         //return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 
                     } 
                     
@@ -433,36 +339,42 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                          }
                 
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                        // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                     } 
                 
 
                      } else {
                         return;
-                     }
+                     } */
 
-                       break;
+                       //break;
+                      // return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
                       //  return choice1 + " wins! " + roundScore; // took out humanChoice + " " + computerChoice
-                        
+                      return choice1 + " wins! " + roundScore;
 
                         
             
                 case "paper":
+                    humanScore += 1;
+                   // computerScore = 0;
                    // humanScore = points;
                   // winnerScore = humanScore + 1;
-                   updatedHumanScore += 1;
+                  console.log(updatedHumanScore = humanScore);
                    //updatedComputerScore = 0;
-                   winner = userHuman;
+                   // let winner = userHuman;
                    
                    
 
                     roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                     winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
                     scoreResult = winnerStatement + " | " + roundScore;  
-                    console.log(scoreResult);
+                    //console.log(scoreResult);
                 
                     //    return humanChoice + " wins! " + roundScore;
 
+
+
+/*
                     if (count <= 5) {
                         count += 1;
                         }
@@ -557,7 +469,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                             return;
                          }
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                        // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 
                     } 
                     
@@ -601,31 +513,39 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                          }
                 
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                      //   return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                     } 
                 
 
                      } else {
                         return;
-                     }
-                    break;
+                     } */
+
+                    //break;
+                    //return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
+                    return humanChoice + " wins! " + roundScore;
+
 
 
                 case "scissors":
                    // humanScore = points;
                   // winnerScore = humanScore + 1;
-                   updatedHumanScore += 1;
+                  humanScore += 1;
+                 // computerScore = 0;
+                  console.log(updatedHumanScore = humanScore);
                    //updatedComputerScore = 0;
-                    winner = userHuman;
+                   //let winner = userHuman;
                     
                    
 
                     roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                     winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
                     scoreResult = winnerStatement + " | " + roundScore;  
-                    console.log(scoreResult);
+                    //console.log(scoreResult);
                   //  return humanChoice + " wins! " + roundScore;
 
+
+    /*
                   if (count <= 5) {
                     count += 1;
                     }
@@ -720,7 +640,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                         return;
                      }
             
-                     return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                   //  return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
             
                 } 
                 
@@ -764,23 +684,26 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                      }
             
             
-                     return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                    // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 } 
             
 
                  } else {
 
-                 }
-                  break;
-                    
+                 } */
+                  //break;
+                 // return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
+                 return humanChoice + " wins! " + roundScore;
 
                         default:
                             return;
             
-                    } return count;
+                    } //return count;
                     
 
             case "paper":
+
+            
 
                 switch (computerChoice) {
                     case "rock":
@@ -788,8 +711,10 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                         // winnerScore = computerScore + 1;
 
                         // updatedHumanScore = 0;
-                    updatedComputerScore += 1;
-                    winner = userComputer;
+                       // humanScore = 0;
+                        computerScore += 1;
+                        console.log(updatedComputerScore = computerScore);
+                  //let  winner = userComputer;
                     
                     
 
@@ -797,8 +722,12 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                         winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
                         scoreResult = winnerStatement + " | " + roundScore;  
                       
-                      console.log(scoreResult);
+                     // console.log(scoreResult);
                       //  return computerChoice + " wins! " + roundScore;
+
+
+/*
+
 
                       if (count <= 5) {
                         count += 1;
@@ -894,7 +823,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                             return;
                          }
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                       //  return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 
                     } 
                     
@@ -938,31 +867,38 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                          }
                 
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                        // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                     } 
                 
 
                      } else {
                         return;
-                     }
-                      break;
+                     } */
+                    //  break;
+                    return computerChoice + " wins! " + roundScore;
                       
             
                     case "paper":
                         //humanScore = points;
                         //computerScore = points;
                       //  winnerScore = humanScore + 1 && computerScore + 1;
-                        updatedHumanScore += 1;
-                        updatedComputerScore += 1;
-                        winner = userHuman && userComputer;
+                      humanScore += 1;
+                      computerScore += 1;
+                      console.log(updatedHumanScore = humanScore);
+                      console.log(updatedComputerScore += computerScore);
+                       //let winner = userHuman || userComputer;
                         
                         
                         
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
                         scoreResult = winnerStatement + " | " + roundScore;  
-                        console.log(scoreResult);
+                        //console.log(scoreResult);
                        // return choice2 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
+                      
+                      
+            /*          
+                      
                        if (count <= 5) {
                         count += 1;
                         }
@@ -1057,7 +993,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                             return;
                          }
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                      //   return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 
                     } 
                     
@@ -1106,27 +1042,35 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                 
 
                      } else {
-
-                     }
+                        return;
+                     } */
                      
-                       break;
+                       //break;
+                       //return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
+                       return choice2 + " wins! " + roundScore;
+
 
 
                     case "scissors":
                         // computerScore = points;
                       //  winnerScore = computerScore + 1;
                        // updatedHumanScore = 0;
-                        updatedComputerScore += 1;
-                        winner = userComputer;
+                       //humanScore = 0;
+                       computerScore +=1;
+                       console.log(updatedComputerScore = computerScore);
+                        // let winner = userComputer;
                         
                         
 
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
                         scoreResult = winnerStatement + " | " + roundScore;  
-                        console.log(scoreResult);
+                      //  console.log(scoreResult);
                       // return computerChoice + " wins! " + roundScore;
                       
+
+
+          /*            
                       if (count <= 5) {
                         count += 1;
                         }
@@ -1221,7 +1165,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                             return;
                          }
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                         //return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 
                     } 
                     
@@ -1271,15 +1215,17 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
 
                      } else {
                         return;
-                     }
+                     } */
                       
                       
-                      break;
+                     // break;
+                     //return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
+                     return computerChoice + " wins! " + roundScore;
 
                         
                         default:
                             return;
-        } return count;
+        } //return count;
 
             case "scissors":
 
@@ -1289,8 +1235,10 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                         // computerScore = points;
                       //  winnerScore = computerScore + 1;
                        // updatedHumanScore = 0;
-                        updatedComputerScore += 1;
-                        winner = userComputer;
+                       //humanScore = 0;
+                       computerScore += 1;
+                       console.log(updatedComputerScore = computerScore);
+                       // winner = userComputer;
                        
                         
                       
@@ -1298,9 +1246,12 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                         winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
                       
                         scoreResult = winnerStatement + " | " + roundScore;  
-                        console.log(scoreResult);
+                       // console.log(scoreResult);
                        // return computerChoice + " wins! " + roundScore;
                       
+
+/*
+
                        if (count <= 5) {
                         count += 1;
                         }
@@ -1395,7 +1346,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                             return;
                          }
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                        // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 
                     } 
                     
@@ -1439,35 +1390,40 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                          }
                 
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                        // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                     } 
                 
 
                      } else {
                         return; 
-                     }
+                     } */
                       
                       
-                       break;
+                       //break;
+                       //return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
+                       return computerChoice + " wins! " + roundScore;
 
 
                     case "paper":
                        // humanScore = points;
                       //  winnerScore = humanScore + 1;
-
-                        updatedHumanScore += 1;
+                      humanScore += 1;
+                      //computerScore = 0;
+                      console.log(updatedHumanScore = humanScore);
                        // updatedComputerScore = 0;
-                        winner = userHuman;
-                        loser = userComputer;
+                       // let winner = userHuman;
+                       
                         
 
                         roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
                         winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
                     
                         scoreResult = winnerStatement + " | " + roundScore;  
-                        console.log(scoreResult);
+                       // console.log(scoreResult);
                       //  return humanChoice + " wins! " + roundScore;
                      
+
+        /*              
                       if (count <= 5) {
                         count += 1;
                         }
@@ -1563,7 +1519,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                             return;
                          }
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                        // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                 
                     } 
                     
@@ -1607,16 +1563,18 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                          }
                 
                 
-                         return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                        // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                     } 
                 
 
                      } else {
                         return;
-                     }
+                     } */
                      
                      
-                      break;
+                      //break;
+                     // return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
+                     return humanChoice + " wins! " + roundScore;
 
 
                     case "scissors":
@@ -1624,10 +1582,11 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                         //computerScore = points;
                         
                       //  winnerScore = humanScore + 1 && computerScore + 1;                    
-                        
-                        updatedHumanScore += 1;
-                        updatedComputerScore += 1;
-                        winner = userHuman && userComputer;
+                      humanScore += 1;
+                      computerScore += 1;
+                      console.log(updatedHumanScore = humanScore);
+                      console.log(updatedComputerScore = computerScore);
+                       // let winner = userHuman || userComputer;
                         
                         
                         
@@ -1635,9 +1594,11 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                         winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
                       
                         scoreResult = winnerStatement + " | " + roundScore;  
-                        console.log(scoreResult);
-                        // return choice3 + " wins! " + roundScore; // removed humanChoice + " " + computerChoice
+                        //console.log(scoreResult);
+                        
                        
+
+     /*                   
                         if (count <= 5) {
                             count += 1;
                             }
@@ -1732,7 +1693,7 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                                 return;
                              }
                     
-                             return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                            // return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                     
                         } 
                         
@@ -1776,23 +1737,24 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
                              }
                     
                     
-                             return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
+                             //return console.log({ winnerStatement, roundScore, scoreResult, numberOfRounds, finalScore, winner, userHuman, userComputer, updatedHumanScore, updatedComputerScore });
                         } 
                     
     
                          } else {
                             return;
-                         }
+                         } */
                        
                        
                        
-                        break;
-
+                        //break;
+                       // return { roundScore, userHuman, userComputer, winnerStatement, scoreResult, updatedHumanScore, updatedComputerScore };
+                       return choice3 + " wins! " + roundScore;
                                             
                         default:
                             return;
 
-}   return count;                     
+}  // return count;                     
 
     
 } // main switch endbacket 
@@ -1812,28 +1774,31 @@ function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputer
 
 
 
-let humanResult = getHumanChoice;
-let computerResult = getComputerChoice;
+//let humanResult = getHumanChoice;
+//let computerResult = getComputerChoice;
 
 // let choiceResults = playerChoices;
 
 // below code taken from assignment step 5 example
 
-let humanSelection = humanResult(); // changed getHumanChoice() to humanResult() & const to let
-let computerSelection = computerResult(); // changed getComputerChoice() to computerResult() & const to let 
+const humanSelection = getHumanChoice(); // changed getHumanChoice() to humanResult() & const to let
+const computerSelection = getComputerChoice(); // changed getComputerChoice() to computerResult() & const to let 
 //let choiceSelections = choiceResults();
 //playRound(humanSelection, computerSelection); //commenting out as it didn't do anything
 
 // this is coming back undefined, why?
 
 console.log(playRound(humanSelection, computerSelection)); //  changed humanSelection, computerSelection - this line was printing the winning message for a second time
-
-if (count >= 2 && count <= 4) {
+startTimer(); 
+//if (count >= 2 && count <= 4) {
 console.log(playRound(humanChoice, computerChoice));
+startTimer(); 
 console.log(playRound(humanChoice, computerChoice));
+startTimer(); 
 console.log(playRound(humanChoice, computerChoice));
+startTimer(); 
 console.log(playRound(humanChoice, computerChoice));
-}
+//}
 
 
 //call playRound and store it's returned values
@@ -2109,7 +2074,7 @@ if (updatedHumanScore <= 5 && updatedComputerScore <= 5 && numberOfRounds === 5)
 
 } // end of playGame
 
-
+//playGame(); this doubles prompts
 
 // leave this call for playGame to sucessfully pass values from playRound to refreshPlay
 //console.log(playGame());
