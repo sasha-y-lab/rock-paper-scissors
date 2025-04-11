@@ -16,17 +16,7 @@ let computerScore = 0;
 
 
 
-/*
 
-function startTimer() {
-
- setTimeout(playGame, 3000);
-
-   } 
-
-   startTimer();
-
-*/
 
    // start getHumanChoice
 
@@ -430,16 +420,7 @@ break;
 playRound(); // humanSelection, computerSelection
 
 
-playRound();
-
-
-playRound();
-
-
-playRound();
-
-
-playRound();
+// removed 5 rounds
 
 
 
