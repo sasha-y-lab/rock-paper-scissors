@@ -86,7 +86,12 @@ myButtons.appendChild(scissorsBtn);
 
 gameControl.appendChild(myButtons);
 
+// a div for user choices images &  scoring
+const gameResultDisplay = document.createElement("div");
+gameResultDisplay.classList.add("game-result");
+gameControl.appendChild(gameResultDisplay);
 
+/*
 // a div for user choices images &  scoring
 const gameResultDisplay = document.createElement("div");
 gameResultDisplay.classList.add("game-result");
@@ -126,6 +131,7 @@ computerCurrentChoice.appendChild(textComputerImg);
 gameResultDisplay.appendChild(computerCurrentChoice);
 
 gameControl.appendChild(gameResultDisplay);
+*/
 
 gameDisplay.appendChild(gameControl);
 
@@ -145,9 +151,9 @@ function playerSelection (humanSelection, computerSelection) {
          
     let computerSelectionMap = new Map();
 
-    computerSelectionMap.set(1, rockBtn);
-    computerSelectionMap.set(2, paperBtn);
-    computerSelectionMap.set(3, scissorsBtn);
+    computerSelectionMap.set(1, rockImg);
+    computerSelectionMap.set(2, paperImg);
+    computerSelectionMap.set(3, scissorsImg);
 
 
 
@@ -163,16 +169,80 @@ allButtons.forEach((allButton) => {
       humanSelection = e.target;
       console.log(humanSelection);
         
+      let humanScore = 0;
+      let computerScore = 0;   
 
        if (humanSelection === rockImg || humanSelection === paperImg || humanSelection === scissorsImg) {
 
             console.log(humanSelection);
+            computerChoice = computerSelectionMap.get(computerSelection);
             console.log(computerSelection);
-            console.log(computerSelectionMap.get(computerSelection));
-          return computerSelectionMap.get(computerSelection);
+            console.log(computerChoice);
+           
+            
+          // open gameresult display and update
 
-          
-       } // first if statement end
+const updateGameResultDisplay = document.querySelector(".game-result")
+// human user
+const humanCurrentChoice = document.createElement("div");
+humanCurrentChoice.classList.add("human-current-choice");
+
+const userHumanImg = document.createElement("img");
+userHumanImg.classList.add("human-img");
+userHumanImg.src = humanSelection.src;
+//console.log(humanSelection.src);
+userHumanImg.height = 150;
+userHumanImg.width = 150;
+humanCurrentChoice.appendChild(userHumanImg);
+
+const textHumanImg = document.createElement("p");
+textHumanImg.textContent = "You";
+humanCurrentChoice.appendChild(textHumanImg);
+
+const scoreHuman = document.createElement("p");
+scoreHuman.textContent = humanScore.toString();
+humanCurrentChoice.appendChild(scoreHuman);
+
+updateGameResultDisplay.appendChild(humanCurrentChoice);
+
+// computer user
+const computerCurrentChoice = document.createElement("div");
+computerCurrentChoice.classList.add("computer-current-choice");
+
+const userComputerImg = document.createElement("img");
+userComputerImg.classList.add("computer-img");
+userComputerImg.src = computerSelectionMap.get(computerSelection).src;
+//console.log(computerSelectionMap.get(computerSelection).src);
+userComputerImg.height = 150;
+userComputerImg.width = 150;
+computerCurrentChoice.appendChild(userComputerImg);
+
+const textComputerImg = document.createElement("p");
+textComputerImg.textContent = "Computer";
+computerCurrentChoice.appendChild(textComputerImg);
+
+const scoreComputer = document.createElement("p");
+scoreComputer.textContent = computerScore.toString();
+computerCurrentChoice.appendChild(scoreComputer);
+
+updateGameResultDisplay.appendChild(computerCurrentChoice);
+
+gameControl.appendChild(updateGameResultDisplay);
+gameDisplay.appendChild(gameControl);
+
+container.appendChild(gameDisplay);
+body.appendChild(container);
+       
+
+        if (humanSelection === computerChoice) {
+
+humanScore++;
+computerScore++;
+
+
+        } //inner if statement end
+
+    } // first if statement end
 
             }); // event listener end
         
