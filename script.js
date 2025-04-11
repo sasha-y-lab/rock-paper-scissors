@@ -152,7 +152,7 @@ const changeUserImage = () => {
 }
 
 for (let i = choices.length - 1; i >= 0; i++) {
-const buttonChoice = choices[i].document.querySelector("button");
+const buttonChoice = choices[i] //document.querySelector("button");
 buttonChoice.onclick = changeUserImage;
 break;
 }
