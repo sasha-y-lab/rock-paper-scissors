@@ -27,6 +27,11 @@ const gameControlH3 = document.createElement("h3");
 gameControlH3.textContent = "Click to Play";
 gameControl.appendChild(gameControlH3);
 
+// create a div just for buttons
+
+const myButtons = document.createElement("div");
+myButtons.classList.add("all-buttons");
+
 // rock button
 const rockBtn = document.createElement("button");
 rockBtn.setAttribute("id", "rock-btn"); // adds id
@@ -42,7 +47,7 @@ rockImg.height = 250;
 rockImg.width = 250;
 rockBtn.appendChild(rockImg);
 
-gameControl.appendChild(rockBtn);
+myButtons.appendChild(rockBtn);
 
 // paper button
 
@@ -60,7 +65,7 @@ paperImg.height = 250;
 paperImg.width = 250;
 paperBtn.appendChild(paperImg);
 
-gameControl.appendChild(paperBtn);
+myButtons.appendChild(paperBtn);
 
 // scissors button
 
@@ -77,7 +82,9 @@ scissorsImg.height = 250;
 scissorsImg.width = 250;
 scissorsBtn.appendChild(scissorsImg);
 
-gameControl.appendChild(scissorsBtn);
+myButtons.appendChild(scissorsBtn);
+
+gameControl.appendChild(myButtons);
 
 
 // a div for user choices images &  scoring
@@ -125,8 +132,69 @@ gameDisplay.appendChild(gameControl);
 container.appendChild(gameDisplay);
 body.appendChild(container);
 
-const choices = [rockBtn, paperBtn, scissorsBtn];
 
+
+//const playerSelection = function(humanSelection, computerSelection) {
+
+//const choices = [rockBtn, paperBtn, scissorsBtn]; // an array
+
+function playerSelection (humanSelection, computerSelection) {
+
+    //humanSelection = [rockBtn, paperBtn, scissorsBtn];
+    computerSelection = Math.floor(Math.random() * 3) + 1;
+         
+    let computerSelectionMap = new Map();
+
+    computerSelectionMap.set(1, rockBtn);
+    computerSelectionMap.set(2, paperBtn);
+    computerSelectionMap.set(3, scissorsBtn);
+
+
+
+let allButtons = document.querySelectorAll(".all-buttons");
+
+
+//loop through buttons
+
+allButtons.forEach((allButton) => {
+    allButton.addEventListener('click', (e) => {
+        //alert(allButton.id);
+      //  console.log(e.target); // show each button pressed when pressed
+      humanSelection = e.target;
+      console.log(humanSelection);
+        
+
+       if (humanSelection === rockImg || humanSelection === paperImg || humanSelection === scissorsImg) {
+
+            console.log(humanSelection);
+            console.log(computerSelection);
+            console.log(computerSelectionMap.get(computerSelection));
+          return computerSelectionMap.get(computerSelection);
+
+          
+       } // first if statement end
+
+            }); // event listener end
+        
+        }); // for each loop end
+
+    } // end of function playerSelection
+      playerSelection();
+        // humanSelection = [rockBtn.addEventListener("click"), paperBtn.addEventListener("click"), scissorsBtn.addEventListener("click")]
+       
+
+
+
+/*
+    if (buttons.addEventListener("click"))
+        humanSelection = true;
+    if (humanSelection)
+}
+*/
+
+
+
+/* leave for now
 const changeUserImage = () => {
 
 
@@ -150,12 +218,16 @@ const changeUserImage = () => {
 
 
 }
+*/
 
+/* leave for now
 for (let i = choices.length - 1; i >= 0; i++) {
 const buttonChoice = choices[i] //document.querySelector("button");
 buttonChoice.onclick = changeUserImage;
 break;
 }
+*/
+
 
 /* doesn't work
 const rockChoice = document.querySelector("#rock-btn");
@@ -182,5 +254,3 @@ scissorsChoice.onclick = changeUserImage;
 
 
 
-
-   
