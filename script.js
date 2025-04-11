@@ -1,429 +1,186 @@
+const body = document.querySelector("body");
+// create a new div called container
 
-const userHuman = "Human"; //const
-const userComputer = "The Computer"; //const
-
-
-
-
-let humanScore = 0;
-let computerScore = 0;
+const container = document.createElement("div");
+container.setAttribute("id", "container"); // adds id
 
 
+// access container div
+const mainContainer = document.querySelector("#container");
+
+// what goes in the main container? a header1 and a game display div
+const mainContainerH1 = document.createElement("h1");
+mainContainerH1.textContent = "ROCK, PAPER, SCISSORS";
+container.appendChild(mainContainerH1);
+
+const gameDisplay = document.createElement("div");
+gameDisplay.classList.add("game-display");
+
+// what goes in game display div? a div for gameControl that includes a header3 & 3 buttons
+// along with user image button choice and user name on another line
+// score on last line
+
+const gameControl = document.createElement("div");
+gameControl.classList.add("game-control");
+
+const gameControlH3 = document.createElement("h3");
+gameControlH3.textContent = "Click to Play";
+gameControl.appendChild(gameControlH3);
+
+// rock button
+const rockBtn = document.createElement("button");
+rockBtn.setAttribute("id", "rock-btn"); // adds id
+rockBtn.style.backgroundColor = "white";
+rockBtn.style.border = "none";
+
+
+// rock button has rock image inside of it
+const rockImg = document.createElement("img");
+rockImg.setAttribute("id", "rock-img"); // adds id 
+rockImg.src = "./images/rps-rock-hand.png";
+rockImg.height = 250;
+rockImg.width = 250;
+rockBtn.appendChild(rockImg);
+
+gameControl.appendChild(rockBtn);
+
+// paper button
+
+const paperBtn = document.createElement("button");
+paperBtn.setAttribute("id", "paper-btn"); // adds id
+paperBtn.style.backgroundColor = "white";
+paperBtn.style.border = "none";
+
+
+// paper button has paper image inside of it
+const paperImg = document.createElement("img");
+paperImg.setAttribute("id", "paper-img"); // adds id
+paperImg.src = "./images/rps-paper-hand.png";
+paperImg.height = 250;
+paperImg.width = 250;
+paperBtn.appendChild(paperImg);
+
+gameControl.appendChild(paperBtn);
+
+// scissors button
+
+const scissorsBtn = document.createElement("button");
+scissorsBtn.setAttribute("id", "scissors-btn"); // adds id
+scissorsBtn.style.backgroundColor = "white";
+scissorsBtn.style.border = "none";
+
+// scissors button has scissors image inside of it
+const scissorsImg = document.createElement("img");
+scissorsImg.setAttribute("id", "scissors-img"); // adds id
+scissorsImg.src = "./images/rps-scissors-hand.png";
+scissorsImg.height = 250;
+scissorsImg.width = 250;
+scissorsBtn.appendChild(scissorsImg);
+
+gameControl.appendChild(scissorsBtn);
+
+
+// a div for user choices images &  scoring
+const gameResultDisplay = document.createElement("div");
+gameResultDisplay.classList.add("game-result");
+
+// human user
+const humanCurrentChoice = document.createElement("div");
+humanCurrentChoice.classList.add("human-current-choice");
+
+const userHumanImg = document.createElement("img");
+userHumanImg.classList.add("human-img");
+userHumanImg.src = "";
+userHumanImg.height = 150;
+userHumanImg.width = 150;
+humanCurrentChoice.appendChild(userHumanImg);
+
+const textHumanImg = document.createElement("p");
+textHumanImg.textContent = "You";
+humanCurrentChoice.appendChild(textHumanImg);
+
+gameResultDisplay.appendChild(humanCurrentChoice);
+
+// computer user
+const computerCurrentChoice = document.createElement("div");
+computerCurrentChoice.classList.add("computer-current-choice");
+
+const userComputerImg = document.createElement("img");
+userComputerImg.classList.add("computer-img");
+userComputerImg.src = "";
+userComputerImg.height = 150;
+userComputerImg.width = 150;
+computerCurrentChoice.appendChild(userComputerImg);
+
+const textComputerImg = document.createElement("p");
+textComputerImg.textContent = "Computer";
+computerCurrentChoice.appendChild(textComputerImg);
+
+gameResultDisplay.appendChild(computerCurrentChoice);
+
+gameControl.appendChild(gameResultDisplay);
+
+gameDisplay.appendChild(gameControl);
+
+container.appendChild(gameDisplay);
+body.appendChild(container);
+
+const choices = [rockBtn, paperBtn, scissorsBtn];
+
+const changeUserImage = () => {
 
 
 
-  
-
-
-
-
-
-   // start getHumanChoice
-
-
-   function getHumanChoice(choice1, choice2, choice3) { // humanChoiceMap
-    choice1 = "rock";
-    choice2 = "paper";
-    choice3 = "scissors";
-
-let humanChoice = prompt("please type in either rock, paper or scissors in lowercase to play"); // changed const to let
-
-// going to make humanChoice input case insensitive for step 5
-let standardChoice = choice1 || choice2 || choice3;
-
-let ignoreCase = standardChoice.localeCompare(humanChoice, "en", { sensitivity: "base" });
-
-   // console.log(typeof ignoreCase); // says ignoreCase is a number? now I must convert a number to string by mapping again
-
-humanChoiceMap = new Map();
-
-humanChoiceMap.set(0, "rock"); 
-humanChoiceMap.set(1, "paper"); 
-humanChoiceMap.set(-1, "scissors");
-
-if (ignoreCase === 0) { 
+	const userImage = document.querySelector('.human-img');
     
-    console.log(choice1); // humanChoice to  humanChoiceMap - choice1 to humanChoice - choice1 changed to ignoreCase which outputs 0
-    return choice1;
-
-
-} else if (ignoreCase === 1) {
-    console.log(choice2); // humanChoice to humanChoiceMap - choice2 to humanChoice - ignoreCase outputs 1
-    return choice2;
-
-} else if (ignoreCase === -1) { // had to define this for step 5
-    console.log(choice3); // humanChoice to humanChoiceMap - chocie3 to humanChoice ignoreCase outputs -1
-    return choice3;
-
-} else { // had to add this for step 5
-    return;
-}
-
-
-} 
-
-// commenting out calling the function as it keeps executing without a log
-//getHumanChoice(); // it works but it is the only thing playing.
-
-
-
-
-function getComputerChoice(choice1, choice2, choice3) { //  computerChoiceMap
-    choice1 = "rock";
-    choice2 = "paper";
-    choice3 = "scissors";
-
-  let computerChoice = Math.floor(Math.random() * 3) + 1;
-
-    // adding a mapping of computerChoice number values to the string values they correspond to for step 5:
-    // const map1 = new Map();
-    // map1.set("a", 1);
-    // map1.set("b", 2);
-    // map1.set("c", 3);
     
-    computerChoiceMap = new Map();
-
-    computerChoiceMap.set("rock", 1);
-    computerChoiceMap.set("paper", 2);
-    computerChoiceMap.set("scissors", 3);
-
-    // testing the new number to string map
-// console.log(computerChoiceMap.get("rock")); // yes this works
-// console.log(computerChoiceMap.get("paper")); //yes this works
-// console.log(computerChoiceMap.get("scissors")); // yes this works
-
-
-
-    if (computerChoice === 1) { //  computerChoiceMap === "rock"
-        console.log(choice1); // computerChoiceMap
-       // return choice1;
-       return choice1; // computerChoiceMap
-
-    } else if (computerChoice === 2) { //  computerChoiceMap === "paper"
-        console.log(choice2); // computerChoiceMap
-       // return choice2;
-       return choice2; //computerChoiceMap
-
-    } else if (computerChoice === 3) { //   computerChoiceMap === "scissors"
-        console.log(choice3); // computerChoiceMap
-        // return choice3;
-        return choice3;
-
+    if (rockBtn.onclick) { //addEventListener('click')
+	userImage.src = rockImg.src;
+    return userImage.src;
+    } else if (paperBtn.onclick) {
+        userImage.src = paperImg.src;
+        return userImage.src;
+    } else if (scissorsBtn.onclick) {
+        userImage.src = scissorsImg.src;
+        return userImage.src;
     } else {
         return;
-    }
-
-    
-} //  end of computer choice
-
-//getComputerChoice() // works - comment out as it's the only thing playing.
-  
-
-//let humanResult = getHumanChoice;
-//let computerResult = getComputerChoice;
+    } 
 
 
 
-// below code taken from assignment step 5 example
+}
 
-//const humanSelection = getHumanChoice; // changed getHumanChoice() to humanResult() & const to let
-//const computerSelection = getComputerChoice; // changed getComputerChoice() to computerResult() & const to let 
-//let choiceSelections = choiceResults();
-//playRound(humanSelection, computerSelection); //commenting out as it didn't do anything
+for (let i = choices.length - 1; i >= 0; i++) {
+const buttonChoice = choices[i].document.querySelector("button");
+buttonChoice.onclick = changeUserImage;
+break;
+}
 
-/*
-console.log(playGame()); // took out humanSelection, computerSelection - this plays the first prompt correctly.
-//startTimer(); 
+/* doesn't work
+const rockChoice = document.querySelector("#rock-btn");
+//buttons.onclick = changeUserImage;
+rockChoice.onclick = changeUserImage;
 
-console.log(playGame());
-//startTimer(); 
+const paperChoice = document.querySelector('#paper-btn');
+paperChoice.onclick = changeUserImage;
 
-console.log(playGame());
-//startTimer(); 
+const scissorsChoice = document.querySelector('#scissors-btn');
+scissorsChoice.onclick = changeUserImage;
 
-console.log(playGame());
-//startTimer();
-
-console.log(playGame());
-//clearTimeout();
 */
 
-function playGame() {
+//let humanScore = 0;
+//let computerScore = 0;
 
-    
-    
-    
+
+
+
+
+  
+
+
+
+
+
    
-
-
-
-
-
-function playRound(humanChoice, computerChoice) { // getHumanChoice, getComputerChoice - humanChoiceMap, computerChoiceMap - humanChoice, computerChoice - the parameters are the choices
-    
- computerChoice = getComputerChoice();
- humanChoice = getHumanChoice();  
-      
-
-let roundScore;
-let winnerStatement;
-let scoreResult = winnerStatement + " | " + roundScore;
-
-
-let updatedHumanScore = humanScore;
-let updatedComputerScore = computerScore;
-
-let choice1 = "rock";
-let choice2 = "paper";
-let choice3 = "scissors";
-
-        switch (humanChoice) { //changing humanChoice to getHumanChoice gave undefined log
-
-
-            
-            case "rock":
-
-            
-
-            switch (computerChoice) { // changing all computerChoice to getComputerChoice gave undefined log
-                
-                
-                
-                case "rock":
-                    
-                   // winnerScore = (humanScore + 1) && (computerScore + 1);
-                   humanScore++;
-                   computerScore++;;
-                   
-                 updatedHumanScore = humanScore;
-                   updatedComputerScore = computerScore;
-                  // let winner = userHuman || userComputer;
-                    
-                    
-
-                    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                    winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-                    scoreResult = winnerStatement + " | " + roundScore;
-                    console.log(scoreResult); 
-                    
-                  console.log(choice1 + " wins! " + roundScore);
-                  
-                   
-                  break;
-
-                        
-            
-                case "paper":
-                    
-                  // computerScore = 0;
-                   humanScore++;
-                  // winnerScore = humanScore + 1;
-                  updatedHumanScore = humanScore;
-                  updatedComputerScore = computerScore;
-                   //updatedComputerScore = 0;
-                   // let winner = userHuman;
-                   
-                   
-
-                    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                    winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-                    scoreResult = winnerStatement + " | " + roundScore;
-                    
-                    console.log(scoreResult); 
-                    console.log(userHuman + " wins! " + roundScore);
-                   
-                    break;
-
-
-                case "scissors":
-                   humanScore++;
-                  // winnerScore = humanScore + 1;
-                  ;
-                 //computerScore = 0;
-                  updatedHumanScore = humanScore;
-                  updatedComputerScore = computerScore;
-                   //updatedComputerScore = 0;
-                   //let winner = userHuman;
-                    
-                   
-
-                    roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                    winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-                    scoreResult = winnerStatement + " | " + roundScore;
-                    console.log(scoreResult);  
-                   console.log(userHuman + " wins! " + roundScore);
-                   
-                   
-
-                   break;
-
-                        default:
-                            break;
-            
-                    } 
-                    break;
-
-            case "paper":
-
-            
-
-                switch (computerChoice) {
-                    case "rock":
-                         computerScore++;
-                        // winnerScore = computerScore + 1;
-
-                        // updatedHumanScore = 0;
-                       //humanScore = 0;
-                        
-                        updatedComputerScore = computerScore;
-                        updatedHumanScore = humanScore;
-                  //let  winner = userComputer;
-                    
-                    
-
-                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-                        scoreResult = winnerStatement + " | " + roundScore;
-                        console.log(scoreResult); 
-                        
-                    console.log(userComputer + " wins! " + roundScore);
-                    
-                      break;
-            
-                    case "paper":
-                        humanScore++;
-                        computerScore++;
-                      //  winnerScore = humanScore + 1 && computerScore + 1;
-                      
-                      updatedHumanScore = humanScore;
-                      updatedComputerScore = computerScore;
-                       //let winner = userHuman || userComputer;
-                        
-                        
-                        
-                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-                        scoreResult = winnerStatement + " | " + roundScore;
-                        console.log(scoreResult); 
-                        console.log(choice2 + " wins! " + roundScore);
-                        
-                        break;
-
-
-                    case "scissors":
-                        computerScore++;
-                      //  winnerScore = computerScore + 1;
-                       // updatedHumanScore = 0;
-                      // humanScore = 0;
-                       
-                       updatedComputerScore = computerScore;
-                       updatedHumanScore = humanScore;
-                        // let winner = userComputer;
-                        
-                        
-
-                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-                        scoreResult = winnerStatement + " | " + roundScore;
-                        console.log(scoreResult); 
-                        console.log(userComputer + " wins! " + roundScore);
-                        
-                        break;
-                        
-                        default:
-                            break;
-        } 
-        
-        break;
-
-            case "scissors":
-
-                switch (computerChoice) {
-                    
-                    case "rock":
-                         computerScore++;
-                      //  winnerScore = computerScore + 1;
-                       // updatedHumanScore = 0;
-                      // humanScore = 0;
-                       
-                       updatedComputerScore = computerScore;
-                       updatedHumanScore = humanScore;
-                       // winner = userComputer;
-                       
-                        
-                      
-                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userComputer + " - Score: " + updatedComputerScore + " won!";
-                        scoreResult = winnerStatement + " | " + roundScore;
-                        console.log(scoreResult); 
-                        console.log(userComputer + " wins! " + roundScore);
-                       
-                        break;
-
-
-                    case "paper":
-                       humanScore++;
-                      //  winnerScore = humanScore + 1;
-                      
-                     // computerScore = 0;
-                      updatedHumanScore = humanScore;
-                      updatedComputerScore = computerScore;
-                       // updatedComputerScore = 0;
-                       // let winner = userHuman;
-                       
-                        
-
-                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = userHuman + " - Score: " + updatedHumanScore + " won!";
-                        scoreResult = winnerStatement + " | " + roundScore;
-                        console.log(scoreResult);  
-                        console.log(userHuman + " wins! " + roundScore);
-                      
-                        break;
-
-                    case "scissors":
-                        humanScore++;;
-                        computerScore++;;
-                        
-                      //  winnerScore = humanScore + 1 && computerScore + 1;                    
-                      
-                      updatedHumanScore = humanScore;
-                      updatedComputerScore = computerScore;
-                       // let winner = userHuman || userComputer;
-                        
-                        
-                        
-                        roundScore = userHuman + ": " + updatedHumanScore + " | " + userComputer + ": " + updatedComputerScore;
-                        winnerStatement = "It's a tie! Both " + userHuman + " - Score: " + updatedHumanScore + " and " + userComputer + " - Score: " + updatedComputerScore + " won!";
-                        scoreResult = winnerStatement + " | " + roundScore;
-                        console.log(scoreResult);  
-                        console.log(choice3 + " wins! " + roundScore);
-                        
-                        break;
-
-                        default:
-                            break;
-
-}  
-
-break;                
-
-    
-} // main switch endbacket 
-
-
-
-
-} // this is the playRound function endbracket
-
-
-playRound(); // humanSelection, computerSelection
-
-
-// removed 5 rounds
-
-
-
-} // end of playGame
-
-playGame(); // needed to start playRound
