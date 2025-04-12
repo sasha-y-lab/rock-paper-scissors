@@ -23,14 +23,32 @@ gameDisplay.classList.add("game-display");
 const gameControl = document.createElement("div");
 gameControl.classList.add("game-control");
 
+
+// div to wrap h3
+
+const containerTitle = document.createElement("div");
+containerTitle.classList.add("subtitle");
+
 const gameControlH3 = document.createElement("h3");
 gameControlH3.textContent = "Click to Play";
-gameControl.appendChild(gameControlH3);
+
+containerTitle.appendChild(gameControlH3);
+
+gameControl.appendChild(containerTitle);
+
+
+
 
 // create a div just for buttons
 
 const myButtons = document.createElement("div");
 myButtons.classList.add("all-buttons");
+
+
+// create a main button div as to wrap buttons
+
+let btnContainer = document.createElement("div");
+btnContainer.classList.add("btn-container");
 
 // rock button
 const rockBtn = document.createElement("button");
@@ -47,8 +65,15 @@ rockImg.height = 250;
 rockImg.width = 250;
 rockBtn.appendChild(rockImg);
 
-myButtons.appendChild(rockBtn);
+btnContainer.appendChild(rockBtn);
 
+myButtons.appendChild(btnContainer);
+
+
+// create a main button div as to wrap buttons
+
+btnContainer = document.createElement("div");
+btnContainer.classList.add("btn-container");
 // paper button
 
 const paperBtn = document.createElement("button");
@@ -65,8 +90,15 @@ paperImg.height = 250;
 paperImg.width = 250;
 paperBtn.appendChild(paperImg);
 
-myButtons.appendChild(paperBtn);
+btnContainer.appendChild(paperBtn);
 
+myButtons.appendChild(btnContainer);
+
+
+// create a main button div as to wrap buttons
+
+btnContainer = document.createElement("div");
+btnContainer.classList.add("btn-container");
 // scissors button
 
 const scissorsBtn = document.createElement("button");
@@ -82,7 +114,11 @@ scissorsImg.height = 250;
 scissorsImg.width = 250;
 scissorsBtn.appendChild(scissorsImg);
 
-myButtons.appendChild(scissorsBtn);
+btnContainer.appendChild(scissorsBtn);
+
+myButtons.appendChild(btnContainer);
+
+
 
 gameControl.appendChild(myButtons);
 
@@ -425,7 +461,10 @@ function playGame () {
                 if (updatedHumanScore === 5 || updatedComputerScore === 5) {
                     
                     allButtons.forEach(allButton => {
-                    allButton.disabled = true;
+                   // allButton.disabled = true;
+                   document.getElementById("rock-btn").disabled = true;
+                   document.getElementById("paper-btn").disabled = true;
+                   document.getElementById("scissors-btn").disabled = true;
                     allButton.style.opacity = 0.33;
                 }); // end of allbuttons disabled
 
@@ -453,13 +492,19 @@ function playGame () {
                     
                     updateScoreHuman.textContent = updatedHumanScore;
                     updateScoreComputer.textContent = updatedComputerScore;
-                    allButton.disabled = false;
+                   
+                   // computerCurrentChoice.removeChild(updateUserComputerImg);
+                     //   humanCurrentChoice.removeChild(updateUserHumanImg);
+                    
+                    document.getElementById("rock-btn").disabled = false;
+                   document.getElementById("paper-btn").disabled = false;
+                   document.getElementById("scissors-btn").disabled = false;
                     allButton.style.opacity = 1;
                     // playerSelection(); // looks like its doubling again
                      
                         winTextContent.removeChild(winText);
                         winTextContent.removeChild(restartBtn);
-                   
+                        
                
                     
                    }); // end of event listener for restart button
