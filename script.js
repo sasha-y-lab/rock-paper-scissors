@@ -89,12 +89,13 @@ gameControl.appendChild(myButtons);
 // a div for user choices images &  scoring
 const gameResultDisplay = document.createElement("div");
 gameResultDisplay.classList.add("game-result");
-gameControl.appendChild(gameResultDisplay);
+//gameControl.appendChild(gameResultDisplay);
 
 /*
 // a div for user choices images &  scoring
 const gameResultDisplay = document.createElement("div");
 gameResultDisplay.classList.add("game-result");
+*/
 
 // human user
 const humanCurrentChoice = document.createElement("div");
@@ -102,14 +103,19 @@ humanCurrentChoice.classList.add("human-current-choice");
 
 const userHumanImg = document.createElement("img");
 userHumanImg.classList.add("human-img");
-userHumanImg.src = "";
-userHumanImg.height = 150;
-userHumanImg.width = 150;
+//userHumanImg.src = "";
+//userHumanImg.height = 150;
+//userHumanImg.width = 150;
 humanCurrentChoice.appendChild(userHumanImg);
 
 const textHumanImg = document.createElement("p");
-textHumanImg.textContent = "You";
+textHumanImg.classList.add("player-h");
+//textHumanImg.textContent = "You";
 humanCurrentChoice.appendChild(textHumanImg);
+
+const scoreHuman = document.createElement("p");
+scoreHuman.classList.add("h-score");
+humanCurrentChoice.appendChild(scoreHuman);
 
 gameResultDisplay.appendChild(humanCurrentChoice);
 
@@ -119,19 +125,24 @@ computerCurrentChoice.classList.add("computer-current-choice");
 
 const userComputerImg = document.createElement("img");
 userComputerImg.classList.add("computer-img");
-userComputerImg.src = "";
-userComputerImg.height = 150;
-userComputerImg.width = 150;
+//userComputerImg.src = "";
+//userComputerImg.height = 150;
+//userComputerImg.width = 150;
 computerCurrentChoice.appendChild(userComputerImg);
 
 const textComputerImg = document.createElement("p");
-textComputerImg.textContent = "Computer";
+textComputerImg.classList.add("player-c");
+//textComputerImg.textContent = "Computer";
 computerCurrentChoice.appendChild(textComputerImg);
+
+const scoreComputer = document.createElement("p");
+scoreComputer.classList.add("c-score");
+computerCurrentChoice.appendChild(scoreComputer);
 
 gameResultDisplay.appendChild(computerCurrentChoice);
 
 gameControl.appendChild(gameResultDisplay);
-*/
+
 
 gameDisplay.appendChild(gameControl);
 
@@ -174,66 +185,61 @@ allButtons.forEach((allButton) => {
 
        if (humanSelection === rockImg || humanSelection === paperImg || humanSelection === scissorsImg) {
 
-            console.log(humanSelection);
+            //console.log(humanSelection);
            let computerChoice = computerSelectionMap.get(computerSelection);
-            console.log(computerSelection);
-            console.log(computerChoice);
+           // console.log(computerSelection);
+           // console.log(computerChoice);
            
             
           // open gameresult display and update
 
-const updateGameResultDisplay = document.querySelector(".game-result")
+const updateUserHumanImg = document.querySelector(".human-img")
 // human user
-const humanCurrentChoice = document.createElement("div");
-humanCurrentChoice.classList.add("human-current-choice");
-
-const userHumanImg = document.createElement("img");
-userHumanImg.classList.add("human-img");
-userHumanImg.src = humanSelection.src;
+updateUserHumanImg.src = humanSelection.src;
 //console.log(humanSelection.src);
-userHumanImg.height = 150;
-userHumanImg.width = 150;
-humanCurrentChoice.appendChild(userHumanImg);
+updateUserHumanImg.height = 150;
+updateUserHumanImg.width = 150;
+humanCurrentChoice.appendChild(updateUserHumanImg);
 
-const textHumanImg = document.createElement("p");
-textHumanImg.textContent = "You";
-humanCurrentChoice.appendChild(textHumanImg);
+const updateTextHumanImg = document.querySelector(".player-h");
+updateTextHumanImg.textContent = "You";
+humanCurrentChoice.appendChild(updateTextHumanImg);
 
-const scoreHuman = document.createElement("p");
-scoreHuman.classList.add("h-score");
+//const scoreHuman = document.createElement("p");
+//scoreHuman.classList.add("h-score");
 //scoreHuman.textContent = humanScore.toString();
-humanCurrentChoice.appendChild(scoreHuman);
+//humanCurrentChoice.appendChild(scoreHuman);
 
-updateGameResultDisplay.appendChild(humanCurrentChoice);
+
 
 // computer user
-const computerCurrentChoice = document.createElement("div");
-computerCurrentChoice.classList.add("computer-current-choice");
+//const computerCurrentChoice = document.createElement("div");
+//computerCurrentChoice.classList.add("computer-current-choice");
 
-const userComputerImg = document.createElement("img");
-userComputerImg.classList.add("computer-img");
-userComputerImg.src = computerSelectionMap.get(computerSelection).src;
+const updateUserComputerImg = document.querySelector(".computer-img");
+//userComputerImg.classList.add("computer-img");
+updateUserComputerImg.src = computerSelectionMap.get(computerSelection).src;
 //console.log(computerSelectionMap.get(computerSelection).src);
-userComputerImg.height = 150;
-userComputerImg.width = 150;
-computerCurrentChoice.appendChild(userComputerImg);
+updateUserComputerImg.height = 150;
+updateUserComputerImg.width = 150;
+computerCurrentChoice.appendChild(updateUserComputerImg);
 
-const textComputerImg = document.createElement("p");
-textComputerImg.textContent = "Computer";
-computerCurrentChoice.appendChild(textComputerImg);
+const updateTextComputerImg = document.querySelector(".player-c");
+updateTextComputerImg.textContent = "Computer";
+computerCurrentChoice.appendChild(updateTextComputerImg);
 
-const scoreComputer = document.createElement("p");
-scoreComputer.classList.add("c-score");
+//const scoreComputer = document.createElement("p");
+//scoreComputer.classList.add("c-score");
 //scoreComputer.textContent = computerScore.toString();
-computerCurrentChoice.appendChild(scoreComputer);
+//computerCurrentChoice.appendChild(scoreComputer);
 
-updateGameResultDisplay.appendChild(computerCurrentChoice);
+//gameResultDisplay.appendChild(computerCurrentChoice);
 
-gameControl.appendChild(updateGameResultDisplay);
-gameDisplay.appendChild(gameControl);
+//gameControl.appendChild(gameResultDisplay);
+//gameDisplay.appendChild(gameControl);
 
-container.appendChild(gameDisplay);
-body.appendChild(container);
+//container.appendChild(gameDisplay);
+//body.appendChild(container);
        
 
         if (humanSelection === computerChoice) {
@@ -242,6 +248,8 @@ humanScore++;
 computerScore++;
 console.log(humanScore);
 console.log(computerScore);
+console.log(humanSelection);
+console.log(computerChoice);
 //let newHumanScore = humanScore++;
 //let newComputerScore = computerScore++;
 
@@ -249,21 +257,21 @@ const updateScoreHuman = document.querySelector(".h-score");
 updateScoreHuman.textContent = humanScore.toString();
 humanCurrentChoice.appendChild(updateScoreHuman);
 
-updateGameResultDisplay.appendChild(humanCurrentChoice);
+gameResultDisplay.appendChild(humanCurrentChoice);
 
 const updateScoreComputer = document.querySelector(".c-score");
 updateScoreComputer.textContent = computerScore.toString();
 computerCurrentChoice.appendChild(updateScoreComputer);
-updateGameResultDisplay.appendChild(computerCurrentChoice);
+gameResultDisplay.appendChild(computerCurrentChoice);
 
-gameControl.appendChild(updateGameResultDisplay);
+gameControl.appendChild(gameResultDisplay);
 gameDisplay.appendChild(gameControl);
 
 container.appendChild(gameDisplay);
 body.appendChild(container);
 
 
-return { humanScore, computerScore };
+return { humanScore, computerScore, computerChoice, humanSelection };
 
 
         } //inner if statement end
@@ -272,54 +280,58 @@ return { humanScore, computerScore };
 computerScore++;
 console.log(computerScore);
 console.log(humanScore);
-
+console.log(humanSelection);
+console.log(computerChoice);
 
 const updateScoreHuman = document.querySelector(".h-score");
 updateScoreHuman.textContent = humanScore.toString();
 humanCurrentChoice.appendChild(updateScoreHuman);
 
-updateGameResultDisplay.appendChild(humanCurrentChoice);
+gameResultDisplay.appendChild(humanCurrentChoice);
 
 const updateScoreComputer = document.querySelector(".c-score");
 updateScoreComputer.textContent = computerScore.toString();
 computerCurrentChoice.appendChild(updateScoreComputer);
-updateGameResultDisplay.appendChild(computerCurrentChoice);
+gameResultDisplay.appendChild(computerCurrentChoice);
 
-gameControl.appendChild(updateGameResultDisplay);
+gameControl.appendChild(gameResultDisplay);
 gameDisplay.appendChild(gameControl);
 
 container.appendChild(gameDisplay);
 body.appendChild(container);
 
-return { humanScore, computerScore };
+return { humanScore, computerScore, computerChoice, humanSelection };
 
         } else {
             humanScore++;
             console.log(humanScore);
             console.log(computerScore);
+            console.log(humanSelection);
+console.log(computerChoice);
             
 
             const updateScoreHuman = document.querySelector(".h-score");
             updateScoreHuman.textContent = humanScore.toString();
             humanCurrentChoice.appendChild(updateScoreHuman);
 
-            updateGameResultDisplay.appendChild(humanCurrentChoice);
+            gameResultDisplay.appendChild(humanCurrentChoice);
 
 const updateScoreComputer = document.querySelector(".c-score");
 updateScoreComputer.textContent = computerScore.toString();
 computerCurrentChoice.appendChild(updateScoreComputer);
-updateGameResultDisplay.appendChild(computerCurrentChoice);
+gameResultDisplay.appendChild(computerCurrentChoice);
 
-gameControl.appendChild(updateGameResultDisplay);
+gameControl.appendChild(gameResultDisplay);
 gameDisplay.appendChild(gameControl);
 
 container.appendChild(gameDisplay);
 body.appendChild(container);
 
-            return { humanScore, computerScore };
+            return { humanScore, computerScore, computerChoice, humanSelection };
         }
 
     } // first if statement end
+    
 
             }); // event listener end
         
