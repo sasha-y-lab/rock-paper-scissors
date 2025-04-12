@@ -175,7 +175,7 @@ allButtons.forEach((allButton) => {
        if (humanSelection === rockImg || humanSelection === paperImg || humanSelection === scissorsImg) {
 
             console.log(humanSelection);
-            computerChoice = computerSelectionMap.get(computerSelection);
+           let computerChoice = computerSelectionMap.get(computerSelection);
             console.log(computerSelection);
             console.log(computerChoice);
            
@@ -200,7 +200,8 @@ textHumanImg.textContent = "You";
 humanCurrentChoice.appendChild(textHumanImg);
 
 const scoreHuman = document.createElement("p");
-scoreHuman.textContent = humanScore.toString();
+scoreHuman.classList.add("h-score");
+//scoreHuman.textContent = humanScore.toString();
 humanCurrentChoice.appendChild(scoreHuman);
 
 updateGameResultDisplay.appendChild(humanCurrentChoice);
@@ -222,7 +223,8 @@ textComputerImg.textContent = "Computer";
 computerCurrentChoice.appendChild(textComputerImg);
 
 const scoreComputer = document.createElement("p");
-scoreComputer.textContent = computerScore.toString();
+scoreComputer.classList.add("c-score");
+//scoreComputer.textContent = computerScore.toString();
 computerCurrentChoice.appendChild(scoreComputer);
 
 updateGameResultDisplay.appendChild(computerCurrentChoice);
@@ -238,9 +240,84 @@ body.appendChild(container);
 
 humanScore++;
 computerScore++;
+console.log(humanScore);
+console.log(computerScore);
+//let newHumanScore = humanScore++;
+//let newComputerScore = computerScore++;
+
+const updateScoreHuman = document.querySelector(".h-score");
+updateScoreHuman.textContent = humanScore.toString();
+humanCurrentChoice.appendChild(updateScoreHuman);
+
+updateGameResultDisplay.appendChild(humanCurrentChoice);
+
+const updateScoreComputer = document.querySelector(".c-score");
+updateScoreComputer.textContent = computerScore.toString();
+computerCurrentChoice.appendChild(updateScoreComputer);
+updateGameResultDisplay.appendChild(computerCurrentChoice);
+
+gameControl.appendChild(updateGameResultDisplay);
+gameDisplay.appendChild(gameControl);
+
+container.appendChild(gameDisplay);
+body.appendChild(container);
+
+
+return { humanScore, computerScore };
 
 
         } //inner if statement end
+        else if ((humanSelection === rockImg && computerChoice === paperImg) || (humanSelection === paperImg && computerChoice === scissorsImg) || humanSelection === scissorsImg && computerChoice === rockImg) {
+
+computerScore++;
+console.log(computerScore);
+console.log(humanScore);
+
+
+const updateScoreHuman = document.querySelector(".h-score");
+updateScoreHuman.textContent = humanScore.toString();
+humanCurrentChoice.appendChild(updateScoreHuman);
+
+updateGameResultDisplay.appendChild(humanCurrentChoice);
+
+const updateScoreComputer = document.querySelector(".c-score");
+updateScoreComputer.textContent = computerScore.toString();
+computerCurrentChoice.appendChild(updateScoreComputer);
+updateGameResultDisplay.appendChild(computerCurrentChoice);
+
+gameControl.appendChild(updateGameResultDisplay);
+gameDisplay.appendChild(gameControl);
+
+container.appendChild(gameDisplay);
+body.appendChild(container);
+
+return { humanScore, computerScore };
+
+        } else {
+            humanScore++;
+            console.log(humanScore);
+            console.log(computerScore);
+            
+
+            const updateScoreHuman = document.querySelector(".h-score");
+            updateScoreHuman.textContent = humanScore.toString();
+            humanCurrentChoice.appendChild(updateScoreHuman);
+
+            updateGameResultDisplay.appendChild(humanCurrentChoice);
+
+const updateScoreComputer = document.querySelector(".c-score");
+updateScoreComputer.textContent = computerScore.toString();
+computerCurrentChoice.appendChild(updateScoreComputer);
+updateGameResultDisplay.appendChild(computerCurrentChoice);
+
+gameControl.appendChild(updateGameResultDisplay);
+gameDisplay.appendChild(gameControl);
+
+container.appendChild(gameDisplay);
+body.appendChild(container);
+
+            return { humanScore, computerScore };
+        }
 
     } // first if statement end
 
