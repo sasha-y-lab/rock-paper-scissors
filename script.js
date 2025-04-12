@@ -420,45 +420,62 @@ function playGame () {
                     return;
                 }
 
+                
+
                 if (updatedHumanScore === 5 || updatedComputerScore === 5) {
+                    
                     allButtons.forEach(allButton => {
                     allButton.disabled = true;
                     allButton.style.opacity = 0.33;
+                }); // end of allbuttons disabled
 
                     //const updateWinText = document.querySelector(".win-text");
                     winText.textContent = updatedHumanScore === 5 ? "You Win!" 
                     : updatedComputerScore === 5 ? "Computer Wins!" 
-                    : "";
-                   // winTextContent.appendChild(updateWinText);
+                    : "You Both Win!";
+                    winTextContent.appendChild(winText);
 
                    // let updateRestartBtn = document.querySelector(".restart-btn");
                    restartBtn.style.backgroundColor = "hsl(201, 30.10%, 32.00%)";
                    restartBtn.style.color = "white";
                    restartBtn.textContent = "Restart";
+                   winTextContent.appendChild(restartBtn);
+                   
                    restartBtn.addEventListener("click", function (e) {
-                    updatedHumanScore = 0;
-                    updateScoreComputer = 0;
+                    //console.log(e.target);
+                   // const playAgain = e.target;
+
                     humanScore = 0;
                     computerScore = 0;
+
+                    updatedHumanScore = humanScore;
+                    updatedComputerScore = computerScore;
+                    
+                    updateScoreHuman.textContent = updatedHumanScore;
+                    updateScoreComputer.textContent = updatedComputerScore;
                     allButton.disabled = false;
                     allButton.style.opacity = 1;
-                    playerSelection();
-
-                        if (playerSelection()) {
-                    winTextContent.removeChild(restartBtn);
-                        }
-                    
-                   }); 
+                    // playerSelection(); // looks like its doubling again
+                     
+                        winTextContent.removeChild(winText);
+                        winTextContent.removeChild(restartBtn);
                    
-                
+               
+                    
+                   }); // end of event listener for restart button
+                   
+               
 
-                    });
+                    
+
+             
+
+                
+                
                 }
-                //return { computerScore, humanScore, updatedComputerScore, updatedHumanScore };
-        }
+    }
         playRound();
                     
-        //return { computerScore, humanScore };
         
             
         
