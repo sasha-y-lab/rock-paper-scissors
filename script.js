@@ -168,20 +168,20 @@ function getComputerChoice (computerSelectionMap) {
 
 
 
-//const playerSelection = function(humanSelection, computerSelection) {
+// start game
 
-//const choices = [rockBtn, paperBtn, scissorsBtn]; // an array
-
-
-        // humanSelection = [rockBtn.addEventListener("click"), paperBtn.addEventListener("click"), scissorsBtn.addEventListener("click")]
+let humanScore = 0;
+let computerScore = 0;
 
 function playGame () {
 
+    // start player selection
+
     function playerSelection (humanSelection, computerSelectionMap) {
 
+        
     
-    
-
+// access all buttons
 
         let allButtons = document.querySelectorAll(".all-buttons");
         
@@ -192,7 +192,7 @@ function playGame () {
         
         allButtons.forEach((allButton) => {
             allButton.addEventListener('click', (e) => {
-                //alert(allButton.id);
+                
               //  console.log(e.target); // show each button pressed when pressed
               humanSelection = e.target;
               console.log(humanSelection);
@@ -205,6 +205,7 @@ function playGame () {
               computerSelectionMap.set(2, paperImg);
               computerSelectionMap.set(3, scissorsImg);
         
+             
               
                if (humanSelection === rockImg || humanSelection === paperImg || humanSelection === scissorsImg) {
                 
@@ -229,6 +230,12 @@ function playGame () {
         updateTextHumanImg.textContent = "You";
         humanCurrentChoice.appendChild(updateTextHumanImg);
         
+
+        let updateScoreHuman = document.querySelector(".h-score");
+        //updateScoreHuman.textContent = updatedHumanScore; //humanScore.toString()
+        humanCurrentChoice.appendChild(updateScoreHuman);
+        
+        gameResultDisplay.appendChild(humanCurrentChoice);
         //const scoreHuman = document.createElement("p");
         //scoreHuman.classList.add("h-score");
         //scoreHuman.textContent = humanScore.toString();
@@ -253,6 +260,13 @@ function playGame () {
         updateTextComputerImg.textContent = "Computer";
         computerCurrentChoice.appendChild(updateTextComputerImg);
         
+
+        let updateScoreComputer = document.querySelector(".c-score");
+       // updateScoreComputer.textContent = updatedComputerScore; //computerScore.toString()
+        computerCurrentChoice.appendChild(updateScoreComputer);
+        gameResultDisplay.appendChild(computerCurrentChoice);
+
+
         //const scoreComputer = document.createElement("p");
         //scoreComputer.classList.add("c-score");
         //scoreComputer.textContent = computerScore.toString();
@@ -266,108 +280,131 @@ function playGame () {
         //container.appendChild(gameDisplay);
         //body.appendChild(container);
 
-        function playRound() {
-    
-            let humanScore = 0;
-            let computerScore = 0; 
+        gameControl.appendChild(gameResultDisplay);
+        gameDisplay.appendChild(gameControl);
         
-            playerSelection(humanSelection, computerChoice);
+        container.appendChild(gameDisplay);
+        body.appendChild(container);
+
+        function playRound() { //humanSelection, computerChoice
+    
+          
+
+        let updatedHumanScore = humanScore;
+        let updatedComputerScore = computerScore; 
+        
+            //playerSelection(humanSelection, computerSelectionMap); // this was doubling the play
         
             
                       
                
         
                 if (humanSelection === computerChoice) {
+                    console.log(humanSelection);
+                    console.log(computerChoice);
+        humanScore += 1;
+        computerScore += 1;
+       console.log(humanScore);
+       console.log(computerScore);
+       updatedHumanScore = humanScore;
+      updatedComputerScore = computerScore;
+       // console.log(updatedHumanScore);
+       // console.log(updatedComputerScore);
         
-        humanScore++;
-        computerScore++;
-        console.log(humanScore);
-        console.log(computerScore);
-        console.log(humanSelection);
-        console.log(computerChoice);
         //let newHumanScore = humanScore++;
         //let newComputerScore = computerScore++;
         
-        const updateScoreHuman = document.querySelector(".h-score");
-        updateScoreHuman.textContent = humanScore.toString();
-        humanCurrentChoice.appendChild(updateScoreHuman);
+        //const updateScoreHuman = document.querySelector(".h-score");
+        updateScoreHuman.textContent = updatedHumanScore; //humanScore.toString()
+        //humanCurrentChoice.appendChild(updateScoreHuman);
         
-        gameResultDisplay.appendChild(humanCurrentChoice);
+        //gameResultDisplay.appendChild(humanCurrentChoice);
         
-        const updateScoreComputer = document.querySelector(".c-score");
-        updateScoreComputer.textContent = computerScore.toString();
-        computerCurrentChoice.appendChild(updateScoreComputer);
-        gameResultDisplay.appendChild(computerCurrentChoice);
+       // const updateScoreComputer = document.querySelector(".c-score");
+        updateScoreComputer.textContent = updatedComputerScore; //computerScore.toString()
+        //computerCurrentChoice.appendChild(updateScoreComputer);
+        //gameResultDisplay.appendChild(computerCurrentChoice);
         
-        gameControl.appendChild(gameResultDisplay);
-        gameDisplay.appendChild(gameControl);
+       // gameControl.appendChild(gameResultDisplay);
+        //gameDisplay.appendChild(gameControl);
         
-        container.appendChild(gameDisplay);
-        body.appendChild(container);
+       // container.appendChild(gameDisplay);
+       // body.appendChild(container);
         
         
-        return { humanScore, computerScore, computerChoice, humanSelection };
+        //return { computerScore, humanScore, computerChoice, humanSelection }; //updatedComputerScore, updatedHumanScore,
         
         
                 } //inner if statement end
-                else if ((humanSelection === rockImg && computerChoice === paperImg) || (humanSelection === paperImg && computerChoice === scissorsImg) || humanSelection === scissorsImg && computerChoice === rockImg) {
-        
-        computerScore++;
-        console.log(computerScore);
+                
+                
+               else if ((humanSelection === rockImg && computerChoice === paperImg) || (humanSelection === paperImg && computerChoice === scissorsImg) || (humanSelection === scissorsImg && computerChoice === rockImg)) {
+                    console.log(humanSelection);
+                    console.log(computerChoice);
+       computerScore += 1;
+      humanScore + 0;
+    console.log(computerScore);
         console.log(humanScore);
-        console.log(humanSelection);
-        console.log(computerChoice);
+       updatedHumanScore = humanScore;
+        updatedComputerScore = computerScore;
+       // console.log(updatedHumanScore);
+       // console.log(updatedComputerScore);
         
-        const updateScoreHuman = document.querySelector(".h-score");
-        updateScoreHuman.textContent = humanScore.toString();
-        humanCurrentChoice.appendChild(updateScoreHuman);
+        //const updateScoreHuman = document.querySelector(".h-score");
+        updateScoreHuman.textContent = updatedHumanScore;
+        //humanCurrentChoice.appendChild(updateScoreHuman);
         
-        gameResultDisplay.appendChild(humanCurrentChoice);
+       // gameResultDisplay.appendChild(humanCurrentChoice);
         
-        const updateScoreComputer = document.querySelector(".c-score");
-        updateScoreComputer.textContent = computerScore.toString();
-        computerCurrentChoice.appendChild(updateScoreComputer);
-        gameResultDisplay.appendChild(computerCurrentChoice);
+        //const updateScoreComputer = document.querySelector(".c-score");
+        updateScoreComputer.textContent = updatedComputerScore;
+        //computerCurrentChoice.appendChild(updateScoreComputer);
+        //gameResultDisplay.appendChild(computerCurrentChoice);
         
-        gameControl.appendChild(gameResultDisplay);
-        gameDisplay.appendChild(gameControl);
+    
         
-        container.appendChild(gameDisplay);
-        body.appendChild(container);
+       // return { computerScore, humanScore, updatedComputerScore, updatedHumanScore, computerChoice, humanSelection };
         
-        return { humanScore, computerScore, computerChoice, humanSelection };
-        
-                } else {
-                    humanScore++;
-                    console.log(humanScore);
-                    console.log(computerScore);
+                }
+                
+               else if ((computerChoice === rockImg && humanSelection === paperImg) || (computerChoice === paperImg && humanSelection === scissorsImg) || (computerChoice === scissorsImg && humanSelection === rockImg)) {
+
                     console.log(humanSelection);
         console.log(computerChoice);
+                    humanScore += 1;
+                    computerScore + 0;
+                    console.log(humanScore);
+                    console.log(computerScore);
                     
+        updatedHumanScore = humanScore;
+        updatedComputerScore = computerScore;
+        //console.log(updatedHumanScore);
+        //console.log(updatedComputerScore);
         
-                    const updateScoreHuman = document.querySelector(".h-score");
-                    updateScoreHuman.textContent = humanScore.toString();
-                    humanCurrentChoice.appendChild(updateScoreHuman);
+                   // const updateScoreHuman = document.querySelector(".h-score");
+                    updateScoreHuman.textContent = updatedHumanScore;
+                   // humanCurrentChoice.appendChild(updateScoreHuman);
         
-                    gameResultDisplay.appendChild(humanCurrentChoice);
+                   // gameResultDisplay.appendChild(humanCurrentChoice);
         
-        const updateScoreComputer = document.querySelector(".c-score");
-        updateScoreComputer.textContent = computerScore.toString();
-        computerCurrentChoice.appendChild(updateScoreComputer);
-        gameResultDisplay.appendChild(computerCurrentChoice);
+       // const updateScoreComputer = document.querySelector(".c-score");
+       updateScoreComputer.textContent = updatedComputerScore;
+       // computerCurrentChoice.appendChild(updateScoreComputer);
+        // gameResultDisplay.appendChild(computerCurrentChoice);
         
-        gameControl.appendChild(gameResultDisplay);
-        gameDisplay.appendChild(gameControl);
+    
         
-        container.appendChild(gameDisplay);
-        body.appendChild(container);
-        
-                    return { humanScore, computerScore, computerChoice, humanSelection };
+                   // return { computerScore, humanScore, updatedComputerScore, updatedHumanScore, computerChoice, humanSelection };
+                } 
+                else {
+                    return;
                 }
+
+                //return { computerScore, humanScore, updatedComputerScore, updatedHumanScore };
         }
         playRound();
                     
-        return computerChoice;
+        //return { computerScore, humanScore };
         
             
         
