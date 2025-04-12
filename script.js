@@ -142,6 +142,25 @@ computerCurrentChoice.appendChild(scoreComputer);
 gameResultDisplay.appendChild(computerCurrentChoice);
 
 gameControl.appendChild(gameResultDisplay);
+// winner annoucement plus restart button
+
+const winTextContent = document.createElement("div");
+winTextContent.classList.add("win-text-content");
+
+let winText = document.createElement("p");
+winText.classList.add("win-text");
+winTextContent.appendChild(winText);
+
+let restartBtn = document.createElement("button");
+restartBtn.setAttribute("id", "restart-btn"); // adds id
+restartBtn.style.backgroundColor = "white";
+restartBtn.style.border = "none";
+
+winTextContent.appendChild(restartBtn);
+
+gameControl.appendChild(winTextContent);
+
+
 
 
 gameDisplay.appendChild(gameControl);
@@ -266,6 +285,7 @@ function playGame () {
         computerCurrentChoice.appendChild(updateScoreComputer);
         gameResultDisplay.appendChild(computerCurrentChoice);
 
+        
 
         //const scoreComputer = document.createElement("p");
         //scoreComputer.classList.add("c-score");
@@ -280,11 +300,11 @@ function playGame () {
         //container.appendChild(gameDisplay);
         //body.appendChild(container);
 
-        gameControl.appendChild(gameResultDisplay);
-        gameDisplay.appendChild(gameControl);
+       // gameControl.appendChild(gameResultDisplay);
+       // gameDisplay.appendChild(gameControl);
         
-        container.appendChild(gameDisplay);
-        body.appendChild(container);
+       // container.appendChild(gameDisplay);
+       // body.appendChild(container);
 
         function playRound() { //humanSelection, computerChoice
     
@@ -400,6 +420,40 @@ function playGame () {
                     return;
                 }
 
+                if (updatedHumanScore === 5 || updatedComputerScore === 5) {
+                    allButtons.forEach(allButton => {
+                    allButton.disabled = true;
+                    allButton.style.opacity = 0.33;
+
+                    //const updateWinText = document.querySelector(".win-text");
+                    winText.textContent = updatedHumanScore === 5 ? "You Win!" 
+                    : updatedComputerScore === 5 ? "Computer Wins!" 
+                    : "";
+                   // winTextContent.appendChild(updateWinText);
+
+                   // let updateRestartBtn = document.querySelector(".restart-btn");
+                   restartBtn.style.backgroundColor = "hsl(201, 30.10%, 32.00%)";
+                   restartBtn.style.color = "white";
+                   restartBtn.textContent = "Restart";
+                   restartBtn.addEventListener("click", function (e) {
+                    updatedHumanScore = 0;
+                    updateScoreComputer = 0;
+                    humanScore = 0;
+                    computerScore = 0;
+                    allButton.disabled = false;
+                    allButton.style.opacity = 1;
+                    playerSelection();
+
+                        if (playerSelection()) {
+                    winTextContent.removeChild(restartBtn);
+                        }
+                    
+                   }); 
+                   
+                
+
+                    });
+                }
                 //return { computerScore, humanScore, updatedComputerScore, updatedHumanScore };
         }
         playRound();
